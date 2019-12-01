@@ -1,4 +1,4 @@
-const mix = require('laravel-mix');
+const mix = require('laravel-mix')
 
 /*
  |--------------------------------------------------------------------------
@@ -11,5 +11,20 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-    .sass('resources/sass/app.scss', 'public/css');
+mix
+  .react('resources/js/app.js', 'public/js')
+  .extract([
+    'react', 'react-dom'
+  ]);
+
+if (mix.inProduction()) {
+  mix.version();
+}
+
+mix.browserSync({
+  proxy: 'localhost:80',
+  host: '0.0.0.0',
+  open: false
+});
+
+mix.disableNotifications();
