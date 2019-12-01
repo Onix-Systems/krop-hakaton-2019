@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  web:
+    build: ./docker/web
+    volumes:
+      - ./docker/web/000-default.conf:/etc/apache2/sites-available/000-default.conf
+      - ./src:/var/www/html
+    ports:
+      - 8080:80
+    links:
+      - database
+
+  database:
+    image: postgres:latest
+    volumes:
+      - ./docker/database:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_PASSWORD=secret
