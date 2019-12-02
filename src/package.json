@@ -12,7 +12,8 @@
     },
     "dependencies": {
         "react": "^16.2.0",
-        "react-dom": "^16.2.0"
+        "react-dom": "^16.2.0",
+        "react-router-dom": "^5.1.2"
     },
     "devDependencies": {
         "@babel/preset-react": "^7.0.0",
