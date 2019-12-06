@@ -1,4 +1,5 @@
-const mix = require('laravel-mix')
+const mix = require('laravel-mix');
+require('laravel-mix-svg-sprite');
 
 /*
  |--------------------------------------------------------------------------
@@ -14,10 +15,29 @@ const mix = require('laravel-mix')
 mix
   .react('resources/js/app.js', 'public/js')
   .extract([
-    'react', 'react-dom', 'react-router-dom'
+    'react', 'react-dom', 'react-router-dom', 'semantic-ui-react'
   ]);
 
-mix.sass('resources/scss/app.scss', 'public/css')
+mix
+  .sass('resources/scss/app.scss', 'public/css')
+  .copy('node_modules/semantic-ui-css/semantic.min.css','public/css/semantic.min.css')
+  .copy(
+    'node_modules/semantic-ui-css/themes/default/assets/fonts/icons.woff2',
+    'public/css/themes/default/assets/fonts/icons.woff2'
+  )
+  .copy(
+    'node_modules/semantic-ui-css/themes/default/assets/fonts/icons.woff',
+    'public/css/themes/default/assets/fonts/icons.woff'
+  )
+  .copy(
+    'node_modules/semantic-ui-css/themes/default/assets/fonts/icons.ttf',
+    'public/css/themes/default/assets/fonts/icons.ttf'
+  )
+  .svgSprite(
+    'resources/svg', // The directory containing your SVG files
+    'public/img/svg', // The output path for the sprite
+  );
+
 
 if (mix.inProduction()) {
   mix.version();
