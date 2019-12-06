@@ -19,3 +19,5 @@ Route::get('/test', function() {
         'data' => [],
     ]);
 });
+
+Route::get('/get-equipment', 'Api\EquipmentController');
