@@ -5,17 +5,18 @@ namespace App\Services;
 use App\Exceptions\Api\NotFound;
 use App\Models\FileTable;
 
-class EquipmentService extends AppService
+class HospitalService extends AppService
 {
     /**
      * Returns package history by tracking number
      *
-     * @return array
+     * @param int $id
+     * @return \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Model|object
      * @throws NotFound
      */
-    public function getAllEquipment()
+    public function getHospital(int $id)
     {
-        $equipment = FileTable::query()
+        $hospital = FileTable::query()
             ->select([
                 'id',
                 'custodian_name',
@@ -49,12 +50,9 @@ class EquipmentService extends AppService
                 'work_shedule',
                 'availability_restriction'
             ])
+            ->where('id', $id)
             ->get();
 
-        if (!$equipment) {
-            throw new NotFound('Email not found');
-        }
-
-        return $equipment;
+        return $hospital;
     }
 }

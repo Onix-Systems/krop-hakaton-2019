@@ -21,3 +21,4 @@ Route::get('/test', function() {
 });
 
 Route::get('/get-equipment', 'Api\EquipmentController');
+Route::get('/hospital/{id}', 'Api\HospitalController');

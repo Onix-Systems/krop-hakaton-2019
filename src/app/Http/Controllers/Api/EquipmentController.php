@@ -4,11 +4,12 @@ namespace App\Http\Controllers\Api;
 
 use App\Enums\ApiCode;
 use App\Exceptions\Api\NotFound;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\EquipmentRequest;
 use App\Services\EquipmentService;
 use Illuminate\Http\Response;
 
-class EquipmentController
+class EquipmentController extends Controller
 {
 
     /**
