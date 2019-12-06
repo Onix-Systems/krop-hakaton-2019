@@ -1,3 +1,7 @@
+//third party
+@import url('https://rsms.me/inter/inter.css');
+
+//pages
 @import "components/pages/App";
 
 //layouts
@@ -6,6 +10,8 @@
 // components
 @import "components/elements/Logo";
 @import "components/elements/CityPicker";
+@import "components/elements/SearchField";
+@import "components/elements/ServiceSelector";
 
 body {
     margin: 0;

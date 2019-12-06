@@ -5,11 +5,11 @@ class CityPicker extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      cities: [ //todo move to redux and api call
+      cities: [ // todo move to redux and api call
         {
           text: 'Кропивницький',
           value: 1,
-          selected: true
+          selected: true,
         },
         {
           text: 'с. Нове',
@@ -26,11 +26,11 @@ class CityPicker extends Component {
   }
 
   onCityChanged = (event, { value }) => {
-    const { cites } = this.state;
+    const { cities } = this.state;
     this.setState({
-      city: cites.find((c) => city.value === value)
-    })
-  }
+      city: cities.find((city) => city.value === value),
+    });
+  };
 
   render() {
     const { city, cities } = this.state;

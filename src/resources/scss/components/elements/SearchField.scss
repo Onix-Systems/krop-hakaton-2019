@@ -1,0 +1,20 @@
+@import "../../variables";
+
+.search-field {
+    width: 300px;
+    box-sizing: border-box;
+    border: 1px solid #E7E7E7;
+    border-radius: 4px;
+    background-color: #FFFFFF;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.15);
+}
+
+$font-size: 15px;
+$line-height: 20px;
+
+.search-field__dropdown .default, .search, .item, .text {
+    color: $color;
+    font-family: $font;
+    font-size: $font-size !important;
+    line-height: $line-height !important;
+}
