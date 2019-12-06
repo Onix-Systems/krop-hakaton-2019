@@ -8,6 +8,6 @@ WORKDIR /var/www/html
 RUN chown www-data:www-data -R bootstrap/cache \
  && chown www-data:www-data -R storage
 
-RUN composer install
+RUN composer install --no-dev --optimize-autoloader
 
 EXPOSE 80
