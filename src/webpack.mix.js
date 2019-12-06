@@ -14,10 +14,13 @@ const mix = require('laravel-mix')
 mix
   .react('resources/js/app.js', 'public/js')
   .extract([
-    'react', 'react-dom', 'react-router-dom'
+    'react', 'react-dom', 'react-router-dom', 'semantic-ui-react'
   ]);
 
-mix.sass('resources/scss/app.scss', 'public/css')
+mix
+  .sass('resources/scss/app.scss', 'public/css')
+  .copy('node_modules/semantic-ui-css/semantic.min.css','public/css/semantic.min.css')
+  .copy('node_modules/semantic-ui-css/semantic.min.js','public/js/semantic.min.js');
 
 if (mix.inProduction()) {
   mix.version();

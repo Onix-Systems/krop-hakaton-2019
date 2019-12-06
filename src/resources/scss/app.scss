@@ -1,4 +1,11 @@
-@import "components/pages/App.scss";
+@import "components/pages/App";
+
+//layouts
+@import "components/layouts/Header";
+
+// components
+@import "components/elements/Logo";
+@import "components/elements/CityPicker";
 
 body {
     margin: 0;
