@@ -26,7 +26,7 @@ class FileTableImport implements ToModel
                 'longitude' => $row[7],
                 'equipment_title' => $row[8],
                 'equipment_model' => $row[9],
-                'sn_equipment' => $row[10],
+                'sn_equipment' => $row[10] != 'null' ? $row[10] : '',
                 'equipment_identifier' => $row[11],
                 'producer_country' => $row[12],
                 'producer_name' => $row[13],
