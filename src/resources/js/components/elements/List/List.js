@@ -24,7 +24,7 @@ class List extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  equipments: state.equipments.data,
+  equipments: state.equipments.filtered,
   error: state.equipments.error,
 });
 
