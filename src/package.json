@@ -11,6 +11,8 @@
         "lint": "eslint resources/js"
     },
     "dependencies": {
+        "bootstrap": "^4.4.1",
+        "classnames": "^2.2.6",
         "react": "^16.2.0",
         "react-dom": "^16.2.0",
         "react-router-dom": "^5.1.2",
@@ -31,7 +33,6 @@
         "eslint-plugin-react": "^7.17.0",
         "eslint-plugin-react-hooks": "^1.7.0",
         "laravel-mix": "^4.0.7",
-        "laravel-mix-svg-sprite": "^1.0.1",
         "resolve-url-loader": "^2.3.1",
         "sass": "^1.15.2",
         "sass-loader": "^7.1.0"

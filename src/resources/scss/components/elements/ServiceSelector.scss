@@ -1,7 +1,9 @@
 .service-selector {
-    margin: 0 10px;
+    height: 40px;
+    display: flex;
+    align-items: center;
 }
 
-.service-selector__dropdown-icon {
-    margin-left: 8px;
+.service-selector--border {
+    border-right: 1px #D8D8D8 solid;
 }

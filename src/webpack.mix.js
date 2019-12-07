@@ -1,5 +1,4 @@
 const mix = require('laravel-mix');
-require('laravel-mix-svg-sprite');
 
 /*
  |--------------------------------------------------------------------------
@@ -32,10 +31,6 @@ mix
   .copy(
     'node_modules/semantic-ui-css/themes/default/assets/fonts/icons.ttf',
     'public/css/themes/default/assets/fonts/icons.ttf'
-  )
-  .svgSprite(
-    'resources/svg', // The directory containing your SVG files
-    'images/sprite.svg', // The output path for the sprite
   );
 
 
