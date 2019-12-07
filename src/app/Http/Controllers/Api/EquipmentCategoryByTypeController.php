@@ -17,6 +17,7 @@ class EquipmentCategoryByTypeController extends Controller
      * @param Request $request
      * @param EquipmentCategoryService $service
      * @return \Illuminate\Http\JsonResponse
+     * @throws \App\Exceptions\Api\NotFound
      */
     public function __invoke(Request $request, EquipmentCategoryService $service)
     {

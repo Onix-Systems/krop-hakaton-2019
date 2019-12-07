@@ -1,36 +1,35 @@
 <?php
 
-
 namespace App\Http\Controllers\Api;
+
 
 use App\Enums\ApiCode;
 use App\Exceptions\Api\NotFound;
 use App\Http\Controllers\Controller;
-use App\Services\HospitalService;
-use Illuminate\Http\Request;
+use App\Http\Requests\Api\SearchRequest;
+use App\Services\SearchService;
 use Illuminate\Http\Response;
 
-class HospitalController extends Controller
+class SearchController extends Controller
 {
-
     /**
      *
-     * @param Request $request
-     * @param string $id_u
-     * @param HospitalService $service
+     * @param SearchRequest $request
+     * @param SearchService $service
      * @return \Illuminate\Http\JsonResponse
      * @throws NotFound
      */
-    public function __invoke(Request $request, string $id_u, HospitalService $service)
+    public function __invoke(SearchRequest $request, SearchService $service)
     {
-        $hospital = $service->getHospital($id_u);
+        $data = $service->getSearchData($request->q);
 
         return response()->json([
             'status' => Response::HTTP_OK,
             'code' => ApiCode::OK,
             'message' => 'Hospital fetched successfully',
             'data' => [
-                'hospitals' => $hospital
+                'qty' => count($data),
+                'search_result' => $data
             ]
         ]);
     }

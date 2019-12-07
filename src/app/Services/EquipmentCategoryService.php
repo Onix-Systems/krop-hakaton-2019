@@ -3,20 +3,25 @@
 
 namespace App\Services;
 
-
-use App\Models\FileTable;
+use App\Exceptions\Api\NotFound;
+use App\Models\Equipments;
 
 class EquipmentCategoryService extends AppService
 {
     /**
      * @return array
+     * @throws NotFound
      */
     public function getCategory()
     {
-        $data = FileTable::query()
+        $data = Equipments::query()
             ->select(['diagnostic_subgroup', 'diagnostic_type'])
             ->orderBy('diagnostic_subgroup')
             ->get();
+
+        if (!count($data)) {
+            throw new NotFound('Not found category!');
+        }
 
         return $this->buildTree($data);
     }
@@ -44,12 +49,19 @@ class EquipmentCategoryService extends AppService
     /**
      * @param string $type
      * @return \Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection
+     * @throws NotFound
      */
     public function getCategoryByType(string $type)
     {
-        return FileTable::query()
+        $data = Equipments::query()
             ->where(['diagnostic_type' => $type])
             ->orderBy('diagnostic_type')
             ->get();
+
+        if (!count($data)) {
+            throw new NotFound('Not found category!');
+        }
+
+        return $data;
     }
 }
