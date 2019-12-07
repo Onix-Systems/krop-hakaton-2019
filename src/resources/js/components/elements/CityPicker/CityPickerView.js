@@ -6,11 +6,7 @@ const CityPickerView = ({
   city, cities, onCityChanged,
 }) => (
   <div className="city-picker">
-    <img
-      src={MarkerIcon}
-      alt="marker"
-      className="city-picker__marker"
-    />
+    <Icon name="map marker alternate" />
     <Dropdown
       icon={(
         <span className="city-picker__dropdown-icon">

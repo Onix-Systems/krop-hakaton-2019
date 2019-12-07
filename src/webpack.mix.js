@@ -35,7 +35,7 @@ mix
   )
   .svgSprite(
     'resources/svg', // The directory containing your SVG files
-    'public/img/svg', // The output path for the sprite
+    'images/sprite.svg', // The output path for the sprite
   );
 
 
