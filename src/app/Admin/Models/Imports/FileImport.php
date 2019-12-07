@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Admin\Models;
+namespace App\Admin\Models\Imports;
 
 use Illuminate\Database\Eloquent\Model;
 
