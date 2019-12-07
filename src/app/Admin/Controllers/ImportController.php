@@ -2,7 +2,7 @@
 
 namespace App\Admin\Controllers;
 
-use App\Admin\Models\FileTable;
+use App\Models\Equipments;
 use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Facades\Admin;
 use Encore\Admin\Form;
@@ -36,10 +36,6 @@ class ImportController extends AdminController
         });
     }
 
-    public function upload() {
-        return "<h1>Upload</h1>";
-    }
-
     /**
      * Make a grid builder.
      *
@@ -47,7 +43,7 @@ class ImportController extends AdminController
      */
     protected function grid()
     {
-        $grid = new Grid(new FileTable);
+        $grid = new Grid(new Equipments());
         $grid->tools(function ($tools) {
             $tools->append('
             <div class="btn-group pull-right grid-create-btn" style="margin-right: 10px">
@@ -103,7 +99,7 @@ class ImportController extends AdminController
      */
     protected function detail($id)
     {
-        $show = new Show(FileTable::findOrFail($id));
+        $show = new Show(Equipments::findOrFail($id));
 
         $show->field('id', __('Id'));
         $show->field('custodian_name', __('Custodian name'));
@@ -149,7 +145,7 @@ class ImportController extends AdminController
      */
     protected function form()
     {
-        $form = new Form(new FileTable);
+        $form = new Form(new Equipments());
 
         $form->text('custodian_name', __('Custodian name'));
         $form->text('custodian_identifier', __('Custodian identifier'));

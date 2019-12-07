@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Admin\Models;
+
+namespace App\Models;
+
 
 use Illuminate\Database\Eloquent\Model;
 
-class FileTable extends Model
+class Equipments extends Model
 {
-
-    protected $table = 'file_table_with_content';
+    protected $table = 'equipments';
 
     protected $fillable = [
         'custodian_name',
@@ -39,8 +40,7 @@ class FileTable extends Model
         'diagnostic_type',
         'diagnostic_quantity',
         'work_shedule',
-        'availability_restriction'
+        'availability_restriction',
+        'id_u'
     ];
-
-
 }
