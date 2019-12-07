@@ -31,7 +31,14 @@ class EquipmentCategoryService extends AppService
         foreach ($data as $key => $value) {
             $listCategories[trim($value['diagnostic_subgroup'])][$value['diagnostic_type']] = $value['diagnostic_type'];
         }
-        return $listCategories;
+        $listCategoriesResult = [];
+        foreach ($listCategories as $key => $value) {
+            $listCategoriesResult[] = [
+                'name' => $key,
+                'list' => array_values($value)
+            ];
+        }
+        return $listCategoriesResult;
     }
 
     /**
