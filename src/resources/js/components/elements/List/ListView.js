@@ -1,8 +1,10 @@
 import React from 'react';
 
-const ListView = () => (
+const ListView = ({
+  equipments
+}) => (
   <div>
-    ListView
+    {JSON.stringify(equipments)}
   </div>
 );
 

@@ -1,7 +1,19 @@
-import FETCH_EQUIPMENTS from '../constants/actionTypes';
+import {
+  FETCH_EQUIPMENTS_SUCCESS,
+  FETCH_EQUIPMENTS_ERROR,
+} from '../actionTypes/equipments';
 
-const fetchEquipments = () => ({
-  type: FETCH_EQUIPMENTS,
+const fetchEquipmentsSuccess = (equipments) => ({
+  type: FETCH_EQUIPMENTS_SUCCESS,
+  equipments,
 });
 
-export default fetchEquipments;
+const fetchEquipmentsError = (error) => ({
+  type: FETCH_EQUIPMENTS_ERROR,
+  error,
+});
+
+export {
+  fetchEquipmentsSuccess,
+  fetchEquipmentsError,
+};
