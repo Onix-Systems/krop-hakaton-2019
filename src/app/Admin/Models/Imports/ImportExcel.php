@@ -1,21 +1,22 @@
 <?php
 
-namespace App\Admin\Imports;
+namespace App\Admin\Models\Imports;
 
-use App\Admin\Models\FileTable;
+use App\Models\Equipments;
+use Illuminate\Support\Facades\Hash;
 use Maatwebsite\Excel\Concerns\ToModel;
 
-class FileTableImport implements ToModel
+class ImportExcel implements ToModel
 {
     /**
      * @param array $row
-     *
-     * @return \Illuminate\Database\Eloquent\Model|null
+     * @return Equipments|\Illuminate\Database\Eloquent\Model|\Illuminate\Database\Eloquent\Model[]|void|null
      */
     public function model(array $row)
     {
-        if (intval($row[16])) {
-            return new FileTable([
+//        Equipments::query()->delete();
+        if ($row[2] == 'Україна') {
+            return new Equipments([
                 'custodian_name' => $row[0],
                 'custodian_identifier' => $row[1],
                 'address_country_name' => $row[2],
@@ -32,7 +33,7 @@ class FileTableImport implements ToModel
                 'producer_name' => $row[13],
                 'producer_identifier' => $row[14] != 'null' ? $row[14] : '',
                 'equipment_year' => $row[15],
-                'equipment_life' => +$row[16],
+                'equipment_life' => $row[16] != 'null' ? intval($row[16]) : 0,
                 'registration_date' => $row[17],
                 'equip_condition' => $row[18],
                 'repair_date' => $row[19] != 'null' ? $row[19] : '',
@@ -46,6 +47,7 @@ class FileTableImport implements ToModel
                 'diagnostic_quantity' => intval($row[27]),
                 'work_shedule' => $row[28],
                 'availability_restriction' => $row[29],
+                'id_u' => md5(implode(',', $row))
             ]);
         }
         return;

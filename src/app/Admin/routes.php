@@ -11,8 +11,8 @@ Route::group([
     'middleware'    => config('admin.route.middleware'),
 ], function (Router $router) {
 
-    $router->get('/', 'HomeController@index')->name('admin.home');
-    $router->resource('data', ImportController::class);
+    $router->resource('/', ImportController::class);
+    $router->resource('data', ImportController::class);// Todo use after view statistic in home page
     $router->resource('upload', UploadController::class);
     $router->post('import', 'ImportXslxController@index')->name('importxslx.import');
 
