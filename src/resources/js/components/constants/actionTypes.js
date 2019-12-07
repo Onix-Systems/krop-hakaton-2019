@@ -1,0 +1,3 @@
+const FETCH_EQUIPMENTS = 'FETCH_EQUIPMENTS';
+
+export default FETCH_EQUIPMENTS;
