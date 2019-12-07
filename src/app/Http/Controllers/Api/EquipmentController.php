@@ -26,7 +26,10 @@ class EquipmentController extends Controller
             'status' => Response::HTTP_OK,
             'code' => ApiCode::OK,
             'message' => 'Equipment fetched successfully',
-            'data' => $equipment
+            'data' => [
+                'qty' => count($equipment),
+                'equipments' => $equipment
+            ]
         ]);
     }
 

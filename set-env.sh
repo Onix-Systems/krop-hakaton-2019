@@ -6,7 +6,6 @@ cp .env.example .env
 sed -i "s#APP_ENV=.*#APP_ENV=production#"  .env
 sed -i "s#APP_KEY=.*#APP_KEY=$APP_KEY#"    .env
 sed -i "s#APP_DEBUG=.*#APP_DEBUG=false#"   .env
-sed -i "s#APP_URL=.*#APP_URL=$APP_URL#"    .env
 
 sed -i "s#DB_CONNECTION=.*#DB_CONNECTION=pgsql#"    .env
 sed -i "s#DB_HOST=.*#DB_HOST=$DB_HOST#"             .env
