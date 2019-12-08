@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import ListView from './ListView';
 import fetchEquipmentsAction from '../../services/equipments';
+import { Placeholder } from 'semantic-ui-react'
 
 class List extends Component {
   componentDidMount() {
@@ -12,7 +13,13 @@ class List extends Component {
 
   render() {
     const { error, equipments } = this.props;
-    if (!equipments.length) return (<div>Loader...</div>);
+    if (!equipments.length) return (<Placeholder>
+      <Placeholder.Line />
+      <Placeholder.Line />
+      <Placeholder.Line />
+      <Placeholder.Line />
+      <Placeholder.Line />
+    </Placeholder>);
 
     return (
       <ListView
