@@ -1,0 +1,17 @@
+@import "../../variables";
+
+.list {
+    padding-top: 30px
+}
+
+.list__title {
+    color: #333333;
+    font-family: $font;
+    font-size: 24px;
+    font-weight: 800;
+    line-height: 29px;
+}
+
+.list__cards-container {
+    margin-top: 24px;
+}

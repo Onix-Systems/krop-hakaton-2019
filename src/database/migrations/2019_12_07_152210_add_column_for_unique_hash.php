@@ -28,7 +28,6 @@ class AddColumnForUniqueHash extends Migration
     public function down()
     {
         Schema::rename('equipments', 'file_table_with_content');
-
         Schema::table('file_table_with_content', function (Blueprint $table) {
             $table->dropColumn('id_u');
         });

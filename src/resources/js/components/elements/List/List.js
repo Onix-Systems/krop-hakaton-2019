@@ -12,7 +12,6 @@ class List extends Component {
 
   render() {
     const { error, equipments } = this.props;
-    console.log(equipments);
     if (!equipments.length) return (<div>Loader...</div>);
 
     return (
