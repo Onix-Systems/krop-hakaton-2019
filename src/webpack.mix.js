@@ -31,6 +31,18 @@ mix
   .copy(
     'node_modules/semantic-ui-css/themes/default/assets/fonts/icons.ttf',
     'public/css/themes/default/assets/fonts/icons.ttf'
+  )
+  .copy(
+    'node_modules/semantic-ui-css/themes/default/assets/fonts/outline-icons.woff2',
+    'public/css/themes/default/assets/fonts/outline-icons.woff2'
+  )
+  .copy(
+    'node_modules/semantic-ui-css/themes/default/assets/fonts/outline-icons.woff',
+    'public/css/themes/default/assets/fonts/outline-icons.woff'
+  )
+  .copy(
+    'node_modules/semantic-ui-css/themes/default/assets/fonts/outline-icons.ttf',
+    'public/css/themes/default/assets/fonts/outline-icons.ttf'
   );
 
 
