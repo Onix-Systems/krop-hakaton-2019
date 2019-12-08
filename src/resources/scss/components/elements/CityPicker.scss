@@ -1,24 +1,11 @@
 @import "../../variables";
 
-.city-picker {
-    margin-right: 40px;
-    margin-left: 62px;
-    display: flex;
-    align-items: center;
-}
-
 .city-picker__marker {
-    height: 20px;
-    margin-right: 8px;
+    height: 17px;
+    margin-right: 3px;
 }
 
 .city-picker__dropdown {
     color: $color;
     font-family: $font;
-    font-size: 15px;
-    line-height: 20px;
-}
-
-.city-picker__dropdown-icon {
-    margin: 0 8px;
 }

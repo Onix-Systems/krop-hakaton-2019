@@ -1,7 +1,24 @@
 .header {
     display: flex;
-    align-items: center;
+    align-items: center ;
     height: 70px;
     box-shadow: 0 2px 5px 0 rgba(0,0,0,0.15);
-    padding: 12px 24px;
+}
+
+.header__services {
+    display: flex !important;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header__divider {
+    height: 40px;
+    width: 1px;
+    background-color: #D8D8D8;
+}
+
+@media screen and (max-width: 1024px) {
+    .header {
+        font-size: 0.9em;
+    }
 }

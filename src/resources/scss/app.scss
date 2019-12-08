@@ -1,17 +1,23 @@
 //third party
 @import url('https://rsms.me/inter/inter.css');
+@import "~bootstrap/scss/bootstrap";
 
 //pages
 @import "components/pages/App";
 
 //layouts
 @import "components/layouts/Header";
+@import "components/layouts/Body";
 
 // components
 @import "components/elements/Logo";
 @import "components/elements/CityPicker";
 @import "components/elements/SearchField";
 @import "components/elements/ServiceSelector";
+@import "components/elements/List";
+@import "components/elements/ExpandIcon";
+@import "components/elements/Card";
+@import "components/elements/Map";
 
 body {
     margin: 0;
