@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import SearchFieldView from './SearchFieldView';
+import { bindActionCreators } from 'redux';
+import filterAction from '../../actions/filters';
 
 class SearchField extends Component {
   constructor(props) {
@@ -12,6 +14,7 @@ class SearchField extends Component {
 
   onSearchChanged = (event, { value }) => {
     const { options } = this.props;
+    filter({ filterType: 'search', value });
     this.setState({
       value: options.find((option) => option.value === value),
     });
@@ -34,4 +37,8 @@ const mapStateToProps = (state) => ({
   options: state.availableFilters.search,
 });
 
-export default connect(mapStateToProps)(SearchField);
+const mapDispatchToProps = (dispatch) => bindActionCreators({
+  filter: filterAction,
+}, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(SearchField);

@@ -3,7 +3,7 @@ import { Dropdown, Icon } from 'semantic-ui-react';
 import classNames from 'classnames';
 
 const ServiceSelectorView = ({
-  value, label, options, rightBorder, onSearchChanged,
+  value, label, options, rightBorder, onServiceChanged,
 }) => {
   return (
     <div className={classNames('service-selector', {
@@ -18,7 +18,7 @@ const ServiceSelectorView = ({
         )}
         value={value}
         text={label}
-        onChange={onSearchChanged}
+        onChange={onServiceChanged}
         options={options}
         scrolling
         direction="left"
