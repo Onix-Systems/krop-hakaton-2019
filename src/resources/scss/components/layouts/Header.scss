@@ -3,6 +3,9 @@
     align-items: center ;
     height: 70px;
     box-shadow: 0 2px 5px 0 rgba(0,0,0,0.15);
+    position: fixed;
+    background-color: #fff;
+    z-index: 10000;
 }
 
 .header__services {
@@ -22,3 +25,4 @@
         font-size: 0.9em;
     }
 }
+
