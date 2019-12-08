@@ -20,6 +20,8 @@ const ServiceSelectorView = ({
         text={label}
         onChange={onSearchChanged}
         options={options}
+        scrolling
+        direction="left"
       />
     </div>
   );
