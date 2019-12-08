@@ -1,0 +1,22 @@
+.expand-icon {
+    box-sizing: border-box;
+    height: 32px;
+    width: 32px;
+    border: 1.5px solid #E7E7E7;
+    border-radius: 16px;
+    background-color: #FFFFFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.expand-icon:focus {
+    outline: 0 !important;
+}
+
+.expand-icon__icon {
+    margin-left: 4px !important;
+    margin-bottom: 4px !important;
+}
+
+
