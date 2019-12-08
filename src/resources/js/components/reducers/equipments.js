@@ -57,6 +57,19 @@ const createFilters = (equipments) => {
     diagnostic_subgroup = diagnostic_subgroup.trim();
     diagnostic_type = diagnostic_type.trim();
     work_shedule = work_shedule.trim();
+    let schedule = {
+      ...accumulator.workShedule,
+    };
+    if (work_shedule !== 'null') {
+      schedule = {
+        ...schedule,
+        [work_shedule]: {
+          text: work_shedule,
+          value: work_shedule,
+          selected: false,
+        },
+      };
+    }
     return {
       addressLocality: {
         ...accumulator.addressLocality,
@@ -90,14 +103,7 @@ const createFilters = (equipments) => {
           selected: false,
         },
       },
-      workShedule: {
-        ...accumulator.workShedule,
-        [work_shedule]: {
-          text: work_shedule,
-          value: work_shedule,
-          selected: false,
-        },
-      },
+      workShedule: schedule,
     };
   }, {
     addressLocality: {},
