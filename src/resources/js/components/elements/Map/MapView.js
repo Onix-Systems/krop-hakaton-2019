@@ -21,7 +21,7 @@ class MapView extends React.Component {
 
     return (
       <LeafletMap className="leaflet-container "
-                  center={[48.49, 32.25]}
+                  center={[48.504415,32.379565]}
                   zoom={12}
                   maxZoom={40}
                   attributionControl={true}
