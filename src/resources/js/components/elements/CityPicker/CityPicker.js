@@ -1,39 +1,34 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import CityPickerView from './CityPickerView';
 
 class CityPicker extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      cities: [ // todo move to redux and api call
-        {
-          text: 'Кропивницький',
-          value: 1,
-          selected: true,
-        },
-        {
-          text: 'с. Нове',
-          value: 2,
-          selected: false,
-        },
-      ],
       city: {
         text: 'Кропивницький',
-        value: 1,
+        value: 'Кропивницький',
         selected: true,
       },
     };
   }
 
   onCityChanged = (event, { value }) => {
-    const { cities } = this.state;
+    const { cities } = this.props;
     this.setState({
       city: cities.find((city) => city.value === value),
     });
   };
 
   render() {
-    const { city, cities } = this.state;
+    const { city } = this.state;
+    let { cities } = this.props;
+    if (!cities.length) {
+      cities = [{ ...city }];
+    } else {
+      cities[0].selected = true;
+    }
     return (
       <CityPickerView
         city={city}
@@ -44,4 +39,8 @@ class CityPicker extends Component {
   }
 }
 
-export default CityPicker;
+const mapStateToProps = (state) => ({
+  cities: state.availableFilters.address_locality,
+});
+
+export default connect(mapStateToProps)(CityPicker);
