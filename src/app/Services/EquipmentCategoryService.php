@@ -54,7 +54,7 @@ class EquipmentCategoryService extends AppService
     public function getCategoryByType(string $type)
     {
         $data = Equipments::query()
-            ->where(['diagnostic_type' => $type])
+            ->where('diagnostic_type', 'ILIKE', '%' . strtolower($type) . '%')
             ->orderBy('diagnostic_type')
             ->get();
 
