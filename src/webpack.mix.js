@@ -19,31 +19,8 @@ mix
 
 mix
   .sass('resources/scss/app.scss', 'public/css')
-  .copy('node_modules/semantic-ui-css/semantic.min.css','public/css/semantic.min.css')
-  .copy(
-    'node_modules/semantic-ui-css/themes/default/assets/fonts/icons.woff2',
-    'public/css/themes/default/assets/fonts/icons.woff2'
-  )
-  .copy(
-    'node_modules/semantic-ui-css/themes/default/assets/fonts/icons.woff',
-    'public/css/themes/default/assets/fonts/icons.woff'
-  )
-  .copy(
-    'node_modules/semantic-ui-css/themes/default/assets/fonts/icons.ttf',
-    'public/css/themes/default/assets/fonts/icons.ttf'
-  )
-  .copy(
-    'node_modules/semantic-ui-css/themes/default/assets/fonts/outline-icons.woff2',
-    'public/css/themes/default/assets/fonts/outline-icons.woff2'
-  )
-  .copy(
-    'node_modules/semantic-ui-css/themes/default/assets/fonts/outline-icons.woff',
-    'public/css/themes/default/assets/fonts/outline-icons.woff'
-  )
-  .copy(
-    'node_modules/semantic-ui-css/themes/default/assets/fonts/outline-icons.ttf',
-    'public/css/themes/default/assets/fonts/outline-icons.ttf'
-  );
+  .sass('resources/scss/vendor.scss', 'public/css')
+  .sass('resources/scss/about-us-and-tc.scss', 'public/css')
 
 
 if (mix.inProduction()) {

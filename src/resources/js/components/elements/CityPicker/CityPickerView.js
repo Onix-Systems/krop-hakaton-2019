@@ -1,6 +1,6 @@
 import React from 'react';
 import { Dropdown, Icon } from 'semantic-ui-react';
-import MarkerIcon from '../../../assets/location-pin.svg';
+import MarkerIcon from '../../../../images/svg/location-pin.svg';
 
 const CityPickerView = ({
   city, cities, onCityChanged,

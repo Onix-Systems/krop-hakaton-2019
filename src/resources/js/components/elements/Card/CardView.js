@@ -1,7 +1,7 @@
 import React from 'react';
 import {Accordion, Icon} from 'semantic-ui-react';
 import ExpandIcon from './components/ExpandIcon';
-import MarkerIcon from '../../../assets/location-pin.svg';
+import MarkerIcon from '../../../../images/svg/location-pin.svg';
 
 const CardView = ({
                     equipment, expand, onExpandClicked,

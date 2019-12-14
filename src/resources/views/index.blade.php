@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Кроп Діагност</title>
-    <link rel="stylesheet" type="text/css" href="/css/semantic.min.css">
-    <link href="/css/app.css" rel="stylesheet">
+    <link href="{{ mix('/css/vendor.css') }}" rel="stylesheet">
+    <link href="{{ mix('/css/app.css') }}" rel="stylesheet">
 </head>
 <body>
 <div id="root"></div>

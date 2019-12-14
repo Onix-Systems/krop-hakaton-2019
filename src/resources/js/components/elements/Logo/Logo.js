@@ -1,5 +1,5 @@
 import React from 'react';
-import Icon from '../../../assets/logo.svg';
+import Icon from '../../../../images/svg/logo.svg';
 
 const Logo = () => (
   <div className="logo">
