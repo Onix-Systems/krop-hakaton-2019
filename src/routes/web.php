@@ -15,3 +15,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'ReactAppController@index');
 Route::get('/search', 'ReactAppController@index');
+Route::get('/about-us', AboutController::class);
+Route::get('/terms-of-use-and-privacy-policy', PrivacyPolicyController::class);

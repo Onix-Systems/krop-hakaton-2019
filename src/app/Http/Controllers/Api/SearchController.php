@@ -21,7 +21,7 @@ class SearchController extends Controller
      */
     public function __invoke(SearchRequest $request, SearchService $service)
     {
-        $data = $service->getSearchData($request->q);
+        $data = $service->getSearchData($request->all());
 
         return response()->json([
             'status' => Response::HTTP_OK,

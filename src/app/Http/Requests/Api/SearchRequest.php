@@ -16,7 +16,10 @@ class SearchRequest extends FormRequest
     public function rules()
     {
         return [
-            'q' => 'required|string|min:3',
+            'q' => 'string|min:3',
+            'diagnostic-subgroup' => 'string|min:15',
+            'diagnostic-type' => 'string|min:8',
+            'work-shedule' => 'string|min:8',
         ];
     }
 }
