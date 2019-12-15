@@ -1,9 +1,8 @@
-import FILTER_EQUIPMENTS from '../actionTypes/filters';
+import FETCH_AVAILABLE_FILTERS from '../actionTypes/filters';
 
-const filter = ({ filterType, value }) => ({
-  type: FILTER_EQUIPMENTS,
-  filterType,
-  value,
+const availableFiltersFetched = (availableFilters) => ({
+  type: FETCH_AVAILABLE_FILTERS,
+  availableFilters,
 });
 
-export default filter;
+export default availableFiltersFetched;

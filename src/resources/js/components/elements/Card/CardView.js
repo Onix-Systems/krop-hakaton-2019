@@ -4,8 +4,8 @@ import ExpandIcon from './components/ExpandIcon';
 import MarkerIcon from '../../../../images/svg/location-pin.svg';
 
 const CardView = ({
-                    equipment, expand, onExpandClicked,
-                  }) => (
+  equipment, expand, onExpandClicked,
+}) => (
   <div className="card">
     <Accordion fluid>
       <Accordion.Title>

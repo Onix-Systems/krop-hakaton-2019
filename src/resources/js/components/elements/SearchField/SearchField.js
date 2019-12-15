@@ -1,23 +1,21 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import SearchFieldView from './SearchFieldView';
 import { bindActionCreators } from 'redux';
-import filterAction from '../../../redux/actionCreators/filters';
+import SearchFieldView from './SearchFieldView';
+import filterEquipmentsAction from '../../../redux/asyncActions/equipments';
 
 class SearchField extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: { text: '', value: '' },
+      value: '',
     };
   }
 
   onSearchChanged = (event, { value }) => {
-    const { options } = this.props;
-    filter({ filterType: 'search', value });
-    this.setState({
-      value: options.find((option) => option.value === value),
-    });
+    const { filter, filters } = this.props;
+    filter({ name: 'q', value }, filters);
+    this.setState({ value });
   }
 
   render() {
@@ -34,11 +32,11 @@ class SearchField extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  options: state.availableFilters.search,
+  options: state.availableFilters.q,
 });
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({
-  filter: filterAction,
+  filter: filterEquipmentsAction,
 }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(SearchField);

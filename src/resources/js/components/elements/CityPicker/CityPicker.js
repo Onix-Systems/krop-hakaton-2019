@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import CityPickerView from './CityPickerView';
-import filterAction from '../../../redux/actionCreators/filters';
+import filterEquipmentsAction from '../../../redux/asyncActions/equipments';
 
 class CityPicker extends Component {
   constructor(props) {
@@ -17,9 +17,9 @@ class CityPicker extends Component {
   }
 
   onCityChanged = (event, { value }) => {
-    const { filter } = this.props;
+    const { filter, filters } = this.props;
     const { city } = this.state;
-    filter({ filterType: 'address_locality', value });
+    filter({ name: 'address_locality', value }, filters);
     this.setState({
       city: {
         ...city,
@@ -49,10 +49,11 @@ class CityPicker extends Component {
 
 const mapStateToProps = (state) => ({
   cities: state.availableFilters.address_locality,
+  filters: state.filters,
 });
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({
-  filter: filterAction,
+  filter: filterEquipmentsAction,
 }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(CityPicker);

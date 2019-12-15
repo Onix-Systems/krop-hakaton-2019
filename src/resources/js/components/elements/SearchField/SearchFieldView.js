@@ -8,6 +8,7 @@ const SearchFieldView = ({ options }) => (
       placeholder="Пошук мед. закладу або послуги"
       selection
       search
+      clearable
       fluid
       options={options}
       icon={<Icon name="search" />}

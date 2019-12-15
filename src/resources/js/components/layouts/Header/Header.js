@@ -5,7 +5,8 @@ import Logo from '../../elements/Logo/Logo';
 import CityPicker from '../../elements/CityPicker/CityPicker';
 import SearchField from '../../elements/SearchField/SearchField';
 import ServiceSelector from '../../elements/ServiceSelector/ServiceSelector';
-import filterAction from '../../../redux/actionCreators/filters';
+import fetchAvailableFiltersAction from '../../../redux/asyncActions/filters'
+import filterEquipments from '../../../redux/asyncActions/equipments';
 
 class Header extends Component {
   constructor(props) {
@@ -29,10 +30,15 @@ class Header extends Component {
     };
   }
 
+  componentDidMount() {
+    const { fetchAvailableFilters } = this.props;
+    fetchAvailableFilters();
+  }
+
   onSubgroupChanged = (event, { value }) => {
-    const { filter } = this.props;
+    const { filter, filters } = this.props;
     const { diagnosticSubgroup } = this.state;
-    filter({ filterType: 'diagnostic_subgroup', value });
+    filter({ name: 'diagnostic_subgroup', value }, filters);
     this.setState({
       diagnosticSubgroup: {
         ...diagnosticSubgroup,
@@ -43,9 +49,9 @@ class Header extends Component {
   };
 
   onTypeChanged = (event, { value }) => {
-    const { filter } = this.props;
+    const { filter, filters } = this.props;
     const { diagnosticType } = this.state;
-    filter({ filterType: 'diagnostic_type', value });
+    filter({ name: 'diagnostic_type', value }, filters);
     this.setState({
       diagnosticType: {
         ...diagnosticType,
@@ -56,9 +62,9 @@ class Header extends Component {
   };
 
   onScheduleChanged = (event, { value }) => {
-    const { filter } = this.props;
+    const { filter, filters } = this.props;
     const { workSchedule } = this.state;
-    filter({ filterType: 'work_shedule', value });
+    filter({ filterType: 'work_schedule', value }, filters);
     this.setState({
       workSchedule: {
         ...workSchedule,
@@ -121,11 +127,13 @@ class Header extends Component {
 const mapStateToProps = (state) => ({
   subgroups: state.availableFilters.diagnostic_subgroup,
   types: state.availableFilters.diagnostic_type,
-  schedule: state.availableFilters.work_shedule,
+  schedule: state.availableFilters.work_schedule,
+  filters: state.filters,
 });
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({
-  filter: filterAction,
+  fetchAvailableFilters: fetchAvailableFiltersAction,
+  filter: filterEquipments,
 }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

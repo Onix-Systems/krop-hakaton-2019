@@ -1,23 +1,21 @@
 export default {
   equipments: {
-    all: [],
     filtered: [],
-    error: null,
     selected: null,
   },
   availableFilters: {
     address_locality: [],
-    search: [], // custodianName or diagnosticType
+    q: [], // custodianName or diagnosticType
     diagnostic_subgroup: [],
     diagnostic_type: [],
-    work_shedule: [],
+    work_schedule: [],
   },
   filters: {
     hash: null,
-    address_locality: null,
-    search: '', // custodianName or diagnosticType
+    address_locality: 'Кропивницький',
+    q: null, // custodianName or diagnosticType
     diagnostic_subgroup: null,
     diagnostic_type: null,
-    work_shedule: null,
+    work_schedule: null,
   },
 };

@@ -1,19 +1,9 @@
-import {
-  FETCH_EQUIPMENTS_SUCCESS,
-  FETCH_EQUIPMENTS_ERROR,
-} from '../actionTypes/equipments';
+import FILTER_EQUIPMENTS from '../actionTypes/equipments';
 
-const fetchEquipmentsSuccess = (equipments) => ({
-  type: FETCH_EQUIPMENTS_SUCCESS,
+const equipmentsFiltered = (equipments, filters) => ({
+  type: FILTER_EQUIPMENTS,
   equipments,
+  filters,
 });
 
-const fetchEquipmentsError = (error) => ({
-  type: FETCH_EQUIPMENTS_ERROR,
-  error,
-});
-
-export {
-  fetchEquipmentsSuccess,
-  fetchEquipmentsError,
-};
+export default equipmentsFiltered;

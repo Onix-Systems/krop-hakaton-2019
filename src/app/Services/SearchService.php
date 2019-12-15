@@ -21,8 +21,8 @@ class SearchService extends AppService
                 $q->orWhere('diagnostic_type', 'ILIKE', '%' . strtolower($filters['q']) . '%');
             });
         }
-        if (isset($filters['work_shedule'])) {
-            $query->where(['work_shedule' => $filters['work_shedule']]);
+        if (isset($filters['work_schedule'])) {
+            $query->where(['work_shedule' => $filters['work_schedule']]);
         }
         if (isset($filters['diagnostic_type'])) {
             $query->where(['diagnostic_type' => $filters['diagnostic_type']]);
@@ -31,7 +31,7 @@ class SearchService extends AppService
             $query->where(['diagnostic_subgroup' => $filters['diagnostic_subgroup']]);
         }
         if (isset($filters['address_locality'])) {
-            $query->where(['address-locality' => $filters['address_locality']]);
+            $query->where(['address_locality' => $filters['address_locality']]);
         }
 
         return $query->get();

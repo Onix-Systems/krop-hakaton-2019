@@ -25,14 +25,14 @@ class FiltersService extends AppService
         $custodians = $equipments
             ->unique('custodian_name')
             ->map(function ($item) {return $item['custodian_name'];})
-            ->values()
-            ->sort();
+            ->sort()
+            ->values();
 
         $diagnosticTypes = $equipments
             ->unique('diagnostic_type')
             ->map(function ($item) {return $item['diagnostic_type'];})
-            ->values()
-            ->sort();
+            ->sort()
+            ->values();
 
         $filters = [
             'address_locality' => $equipments
@@ -43,14 +43,14 @@ class FiltersService extends AppService
             'diagnostic_subgroup' => $equipments
                 ->unique('diagnostic_subgroup')
                 ->map(function ($item) {return $item['diagnostic_subgroup'];})
-                ->values()
-                ->sort(),
+                ->sort()
+                ->values(),
             'diagnostic_type' => $diagnosticTypes,
             'work_schedule' => $equipments
                 ->unique('work_shedule')
                 ->map(function ($item) {return $item['work_shedule'];})
-                ->values()
-                ->sort(),
+                ->sort()
+                ->values(),
         ];
 
         return $filters;
