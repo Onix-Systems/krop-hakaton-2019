@@ -7,7 +7,7 @@ class ServiceSelector extends Component {
     return (
       <ServiceSelectorView
         label={label}
-        value={value}
+        selected={value}
         options={options}
         onServiceChanged={onServiceChanged}
         rightBorder={rightBorder}

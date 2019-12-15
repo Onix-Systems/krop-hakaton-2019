@@ -2,8 +2,21 @@
     height: 40px;
     display: flex;
     align-items: center;
+    justify-content: center;
+    width: 33%;
+    padding: 0 2%;
 }
 
 .service-selector--border {
     border-right: 1px #D8D8D8 solid;
+}
+
+.service-selector .dropdown {
+    display: flex;
+    align-items: center;
+}
+
+.service-selector__clear_icon {
+    cursor: pointer;
+    margin-bottom: 2px;
 }

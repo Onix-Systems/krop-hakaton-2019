@@ -6,7 +6,7 @@ const CityPickerView = ({
   city, cities, onCityChanged,
 }) => (
   <div className="city-picker">
-    <img src={MarkerIcon} className="city-picker__marker" />
+    <img src={MarkerIcon} className="city-picker__marker" alt="pin" />
     <Dropdown
       icon={(
         <span className="city-picker__dropdown-icon">

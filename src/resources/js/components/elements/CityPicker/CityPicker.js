@@ -17,10 +17,15 @@ class CityPicker extends Component {
   }
 
   onCityChanged = (event, { value }) => {
-    const { cities, filter } = this.props;
+    const { filter } = this.props;
+    const { city } = this.state;
     filter({ filterType: 'address_locality', value });
     this.setState({
-      city: cities.find((city) => city.value === value),
+      city: {
+        ...city,
+        text: value,
+        value,
+      },
     });
   };
 

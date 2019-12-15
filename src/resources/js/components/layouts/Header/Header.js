@@ -11,33 +11,60 @@ class Header extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      diagnostic_subgroup: {text: '', value: ''},
-      diagnostic_type: {text: '', value: ''},
-      work_shedule: {text: '', value: ''},
+      diagnosticSubgroup: {
+        text: '',
+        value: '',
+        selected: true,
+      },
+      diagnosticType: {
+        text: '',
+        value: '',
+        selected: true,
+      },
+      workSchedule: {
+        text: '',
+        value: '',
+        selected: true,
+      },
     };
   }
 
   onSubgroupChanged = (event, { value }) => {
-    const { subgroups, filter } = this.props;
+    const { filter } = this.props;
+    const { diagnosticSubgroup } = this.state;
     filter({ filterType: 'diagnostic_subgroup', value });
     this.setState({
-      value: subgroups.find((value) => value.value === value),
+      diagnosticSubgroup: {
+        ...diagnosticSubgroup,
+        text: value,
+        value,
+      },
     });
   };
 
   onTypeChanged = (event, { value }) => {
-    const { types, filter } = this.props;
+    const { filter } = this.props;
+    const { diagnosticType } = this.state;
     filter({ filterType: 'diagnostic_type', value });
     this.setState({
-      value: types.find((value) => value.value === value),
+      diagnosticType: {
+        ...diagnosticType,
+        text: value,
+        value,
+      },
     });
   };
 
   onScheduleChanged = (event, { value }) => {
-    const { shedule, filter } = this.props;
+    const { filter } = this.props;
+    const { workSchedule } = this.state;
     filter({ filterType: 'work_shedule', value });
     this.setState({
-      value: shedule.find((value) => value.value === value),
+      workSchedule: {
+        ...workSchedule,
+        text: value,
+        value,
+      },
     });
   };
 
@@ -45,12 +72,12 @@ class Header extends Component {
     const {
       subgroups,
       types,
-      shedule,
+      schedule,
     } = this.props;
     const {
-      diagnostic_subgroup,
-      diagnostic_type,
-      work_shedule,
+      diagnosticSubgroup,
+      diagnosticType,
+      workSchedule,
     } = this.state;
 
     return (
@@ -67,34 +94,34 @@ class Header extends Component {
         <div className="col-6 header__services">
           <ServiceSelector
             label="Підгрупа мед. послуг"
-            value={diagnostic_subgroup}
+            value={diagnosticSubgroup}
             options={subgroups}
             onServiceChanged={this.onSubgroupChanged}
           />
           <div className="header__divider" />
           <ServiceSelector
             label="Вид мед. послуг"
-            value={diagnostic_type}
+            value={diagnosticType}
             options={types}
             onServiceChanged={this.onTypeChanged}
           />
           <div className="header__divider" />
           <ServiceSelector
             label="Графік роботи"
-            value={work_shedule}
-            options={shedule}
+            value={workSchedule}
+            options={schedule}
             onServiceChanged={this.onScheduleChanged}
           />
         </div>
       </div>
     );
-  };
+  }
 }
 
 const mapStateToProps = (state) => ({
   subgroups: state.availableFilters.diagnostic_subgroup,
   types: state.availableFilters.diagnostic_type,
-  shedule: state.availableFilters.work_shedule,
+  schedule: state.availableFilters.work_shedule,
 });
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({
