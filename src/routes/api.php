@@ -18,3 +18,4 @@ Route::get('/hospital/{id_u}', 'Api\HospitalController');
 Route::get('/get-equipment/category', 'Api\EquipmentCategoryController');
 Route::get('/get-equipment/category-by-type', 'Api\EquipmentCategoryByTypeController');
 Route::get('/search', 'Api\SearchController');
+Route::get('/filters', 'Api\FiltersController');
