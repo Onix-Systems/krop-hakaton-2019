@@ -21,15 +21,18 @@ class SearchController extends Controller
      */
     public function __invoke(SearchRequest $request, SearchService $service)
     {
-        $data = $service->getSearchData($request->all());
+        $equipments = $service->getSearchData($request->all());
+        if ($equipments->isEmpty()) {
+            throw new NotFound;
+        }
 
         return response()->json([
             'status' => Response::HTTP_OK,
             'code' => ApiCode::OK,
             'message' => 'Hospital fetched successfully',
             'data' => [
-                'qty' => count($data),
-                'search_result' => $data
+                'qty' => $equipments->count(),
+                'search_result' => $equipments
             ]
         ]);
     }
