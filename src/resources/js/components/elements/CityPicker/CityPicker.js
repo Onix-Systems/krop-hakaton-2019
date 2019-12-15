@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import CityPickerView from './CityPickerView';
-import filterAction from '../../actions/filters';
+import filterAction from '../../../redux/actionCreators/filters';
 
 class CityPicker extends Component {
   constructor(props) {

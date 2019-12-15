@@ -18,6 +18,6 @@ export default {
     search: '', // custodianName or diagnosticType
     diagnostic_subgroup: null,
     diagnostic_type: null,
-    work_shedule: null
+    work_shedule: null,
   },
 };

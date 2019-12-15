@@ -1,9 +1,9 @@
 import {
   fetchEquipmentsSuccess,
   fetchEquipmentsError,
-} from '../actions/equipments';
+} from '../redux/actionCreators/equipments';
 
-const fetchEquipments = () => (dispatch) => {
+const fetchEquipmentsService = () => (dispatch) => {
   fetch('/api/get-equipment')
     .then((res) => res.json())
     .then((res) => {
@@ -12,4 +12,4 @@ const fetchEquipments = () => (dispatch) => {
     }).catch((error) => dispatch(fetchEquipmentsError(error)));
 };
 
-export default fetchEquipments;
+export default fetchEquipmentsService;

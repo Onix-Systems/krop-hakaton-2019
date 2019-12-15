@@ -1,4 +1,4 @@
-import initialState from '../store/initialState';
+import initialState from '../initialState';
 import {
   FETCH_EQUIPMENTS_SUCCESS,
   FETCH_EQUIPMENTS_ERROR,

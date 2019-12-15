@@ -1,4 +1,4 @@
-import initialState from '../store/initialState';
+import initialState from '../initialState';
 import FILTER_EQUIPMENTS from '../actionTypes/filters';
 
 const filters = (state = initialState, action) => {

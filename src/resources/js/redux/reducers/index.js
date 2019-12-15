@@ -1,11 +1,11 @@
 import equipmentsReducer from './equipments';
 import filtersReducer from './filters';
-import initialState from '../store/initialState';
+import initialState from '../initialState';
 import {
   FETCH_EQUIPMENTS_SUCCESS,
   FETCH_EQUIPMENTS_ERROR,
 } from '../actionTypes/equipments';
-import FILTER_EQUIPMENTS from '../actionTypes/filters'
+import FILTER_EQUIPMENTS from '../actionTypes/filters';
 
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import SearchFieldView from './SearchFieldView';
 import { bindActionCreators } from 'redux';
-import filterAction from '../../actions/filters';
+import filterAction from '../../../redux/actionCreators/filters';
 
 class SearchField extends Component {
   constructor(props) {

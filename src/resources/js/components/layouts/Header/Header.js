@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import Logo from '../../elements/Logo/Logo';
 import CityPicker from '../../elements/CityPicker/CityPicker';
 import SearchField from '../../elements/SearchField/SearchField';
 import ServiceSelector from '../../elements/ServiceSelector/ServiceSelector';
-import { bindActionCreators } from 'redux';
-import filterAction from '../../actions/filters';
+import filterAction from '../../../redux/actionCreators/filters';
 
 class Header extends Component {
   constructor(props) {

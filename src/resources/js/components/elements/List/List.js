@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { Placeholder } from 'semantic-ui-react';
 import ListView from './ListView';
-import fetchEquipmentsAction from '../../services/equipments';
-import { Placeholder } from 'semantic-ui-react'
+import fetchEquipmentsService from '../../../services/equipments';
 
 class List extends Component {
   componentDidMount() {
@@ -35,7 +35,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({
-  fetchEquipments: fetchEquipmentsAction,
+  fetchEquipments: fetchEquipmentsService,
 }, dispatch);
 
 export default connect(
