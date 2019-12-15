@@ -13,13 +13,6 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/test', function() {
-    return json_encode([
-        'status' => 200,
-        'data' => [],
-    ]);
-});
-
 Route::get('/get-equipment', 'Api\EquipmentController');
 Route::get('/hospital/{id_u}', 'Api\HospitalController');
 Route::get('/get-equipment/category', 'Api\EquipmentCategoryController');

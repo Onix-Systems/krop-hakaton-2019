@@ -2,43 +2,38 @@
 
 namespace App\Services;
 
-use App\Exceptions\Api\NotFound;
 use App\Models\Equipments;
 
 class SearchService extends AppService
 {
 
     /**
-     * @param string $keyword
-     * @return \Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection
-     * @throws NotFound
+     * @param array $filters
+     * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function getSearchData(array $keyword)
+    public function getSearchData(array $filters)
     {
-        $data = Equipments::query();
+        $query = Equipments::query();
 
-        if (isset($keyword['q'])) {
-            $data->where(function ($q) use ($keyword) {
-                $q->where('custodian_name', 'ILIKE', '%' . strtolower($keyword['q']) . '%');
-                $q->orWhere('diagnostic_type', 'ILIKE', '%' . strtolower($keyword['q']) . '%');
+        if (isset($filters['q'])) {
+            $query->where(function ($q) use ($filters) {
+                $q->where('custodian_name', 'ILIKE', '%' . strtolower($filters['q']) . '%');
+                $q->orWhere('diagnostic_type', 'ILIKE', '%' . strtolower($filters['q']) . '%');
             });
         }
-        if (isset($keyword['work-shedule'])) {
-            $data->where(['work_shedule' => $keyword['work-shedule']]);
+        if (isset($filters['work_shedule'])) {
+            $query->where(['work_shedule' => $filters['work_shedule']]);
         }
-        if (isset($keyword['diagnostic-type'])) {
-            $data->where(['diagnostic_type' => $keyword['diagnostic-type']]);
+        if (isset($filters['diagnostic_type'])) {
+            $query->where(['diagnostic_type' => $filters['diagnostic_type']]);
         }
-        if (isset($keyword['diagnostic-subgroup'])) {
-            $data->where(['diagnostic_subgroup' => $keyword['diagnostic-subgroup']]);
+        if (isset($filters['diagnostic_subgroup'])) {
+            $query->where(['diagnostic_subgroup' => $filters['diagnostic_subgroup']]);
         }
-
-        $data = $data->get();
-
-        if (!count($data)) {
-            throw new NotFound('Not found!');
+        if (isset($filters['address_locality'])) {
+            $query->where(['address-locality' => $filters['address_locality']]);
         }
 
-        return $data;
+        return $query->get();
     }
 }
