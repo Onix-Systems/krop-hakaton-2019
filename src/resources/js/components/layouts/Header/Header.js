@@ -64,7 +64,7 @@ class Header extends Component {
   onScheduleChanged = (event, { value }) => {
     const { filter, filters } = this.props;
     const { workSchedule } = this.state;
-    filter({ filterType: 'work_schedule', value }, filters);
+    filter({ name: 'work_schedule', value }, filters);
     this.setState({
       workSchedule: {
         ...workSchedule,

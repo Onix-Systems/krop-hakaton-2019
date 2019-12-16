@@ -19,7 +19,7 @@ class SearchRequest extends FormRequest
             'q' => 'string|min:3',
             'diagnostic-subgroup' => 'string|min:15',
             'diagnostic-type' => 'string|min:8',
-            'work-shedule' => 'string|min:8',
+            'work-schedule' => 'string|min:8',
         ];
     }
 }
