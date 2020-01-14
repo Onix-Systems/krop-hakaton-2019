@@ -5,10 +5,10 @@ const ListView = ({
   equipments
 }) => (
   <div className="list">
-    <div className="list__title col-12">
+    <div className="list__title">
       Біля 400 варіантів діагностичних обладнань
     </div>
-    <div className="list__cards-container col-12">
+    <div className="list__cards-container">
       {equipments.map((equipment) => (
         <Card
           key={equipment.id}

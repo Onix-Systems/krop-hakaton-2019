@@ -1,28 +1,27 @@
+@import "../../variables";
+@import "../../mixins";
+
 .header {
     display: flex;
-    align-items: center ;
+    top: 0;
+    left: 0;
+    align-items: center;
     height: 70px;
-    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.15);
     position: fixed;
     background-color: #fff;
     z-index: 10000;
-}
-
-.header__services {
-    display: flex !important;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.header__divider {
-    height: 40px;
-    width: 1px;
-    background-color: #D8D8D8;
-}
-
-@media screen and (max-width: 1024px) {
-    .header {
-        font-size: 0.9em;
+    @include box-shadow(0 2px 5px 0 rgba(0,0,0,0.15));
+    .col-1{
+        padding-left: 0;
+    }
+    &__services {
+        display: flex !important;
+        align-items: center;
+        justify-content: space-between;
+    }
+    &__divider {
+        height: 40px;
+        width: 1px;
+        background-color: #D8D8D8;
     }
 }
-

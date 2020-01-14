@@ -9,25 +9,24 @@ const CardView = ({
   <div className="card">
     <Accordion fluid>
       <Accordion.Title>
-        <div className="container-fluid accordion-title__row accordion-title__row--margin-bottom">
+        <div className="container-fluid accordion-title__row accordion-title__row--margin-bottom no-padding">
           <div className="col-11 card__custodian-name">
             {!expand ? equipment.custodian_name :
-              <div className="row">
-                <div className="col-3">
-                  <button className="card__button col-sm-9 accordion-title__bottom_row--margin">
-                    <span>ПОДІЛИТИСЯ</span>
+              <div className="container-fluid">
+                <div className="row">
+                  <button className="card__button accordion-title__bottom_row--margin">
+                    ПОДІЛИТИСЯ
                   </button>
-                </div>
-                <div className="col-3">
-                  <button className="card__button col-sm-9">
-                    <span>НА КАРТІ</span>
+
+                  <button className="card__button">
+                    НА КАРТІ
                   </button>
                 </div>
               </div>
             }
           </div>
           <div
-            className="col-1"
+            className="col-1 d-flex justify-content-end"
           >
             <ExpandIcon
               expand={expand}
@@ -37,7 +36,7 @@ const CardView = ({
         </div>
 
         {!expand ?
-          <div className="container-fluid accordion-title__row accordion-title__row--with-arrow">
+          <div className="container-fluid accordion-title__row accordion-title__row--with-arrow no-padding">
             <div className="">
               {equipment.equipment_title}
             </div>
@@ -50,8 +49,8 @@ const CardView = ({
           </div>
           : ''}
         {!expand ?
-          <div className="container-fluid accordion-title__bottom_row">
-            <div className="col-6 col-sm-7">
+          <div className="container-fluid accordion-title__bottom_row no-padding">
+            <div className="col-6 no-padding">
               <div className="container-fluid no-padding">
                 <div className="accordion-title__bottom_row--margin">
                   <img src={MarkerIcon} className="accordion-title__marker-icon" alt="pin"/>
@@ -67,7 +66,7 @@ const CardView = ({
                 </div>
               </div>
             </div>
-            <div className="col-6">
+            <div className="col-6 text-right no-padding">
               <button className="card__button col-sm-9 accordion-title__bottom_row--margin">
                 <span>ПОДІЛИТИСЯ</span>
               </button>
@@ -80,7 +79,7 @@ const CardView = ({
       </Accordion.Title>
       <Accordion.Content active={expand}>
         <hr/>
-        <div className="container-fluid">
+        <div className="container-fluid no-padding">
           <div className="row">
             <div className="col-4 card__title">Назва закладу</div>
             <div className="col-8 card__description">{equipment.custodian_name}</div>
@@ -103,7 +102,7 @@ const CardView = ({
           </div>
         </div>
         <hr/>
-        <div className="container-fluid">
+        <div className="container-fluid no-padding">
           <div className="row mt-3">
             <div className="col-4 card__title">Група медичних послуг</div>
             <div className="col-8 card__description">{equipment.inspection_type}</div>
@@ -130,7 +129,7 @@ const CardView = ({
           </div>
         </div>
         <hr/>
-        <div className="container-fluid">
+        <div className="container-fluid no-padding">
           <div className="row mt-3">
             <div className="col-4 card__title">Назва країни</div>
             <div className="col-8 card__description">{equipment.address_country_name}</div>
@@ -157,7 +156,7 @@ const CardView = ({
           </div>
         </div>
         <hr/>
-        <div className="container-fluid">
+        <div className="container-fluid no-padding">
           <div className="row mt-3">
             <div className="col-4 card__title">Назва обладнання</div>
             <div className="col-8 card__description">{equipment.equipment_title}</div>

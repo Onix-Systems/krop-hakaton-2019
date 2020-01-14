@@ -1,14 +1,6 @@
 @import "../../variables";
-
-.logo {
-    color: $color;
-    font-family: $font;
-    font-size: 24px;
-    font-weight: 800;
-    line-height: 29px;
-    cursor: pointer;
-}
+@import "../../mixins";
 
 .logo img {
-    width: 50px
+    max-width: 50px;
 }

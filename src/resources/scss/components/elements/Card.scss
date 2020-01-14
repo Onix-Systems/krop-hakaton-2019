@@ -1,112 +1,86 @@
 @import "../../variables";
+@import "../../mixins";
 
 .card {
     box-sizing: border-box;
-    border: 1px solid #E7E7E7;
-    border-radius: 4px;
-    background-color: #FFFFFF;
-    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.15);
+    border: 1px solid $grey2;
+    background-color: #fff;
     margin-bottom: 16px;
     padding: 16px;
+    @include radius(4px);
+    @include box-shadow(0 2px 5px 0 rgba(0, 0, 0, 0.15));
+    &__custodian-name {
+        color: $dark;
+        font: 500 16px/20px $font;
+        padding: 0;
+    }
+    &__title {
+        color: $grey;
+        font: 15px/20px $font;
+    }
+    &__description {
+        color: $dark;
+        font: 15px/20px $font;
+    }
+    &__button {
+        box-sizing: border-box;
+        border: 1.5px solid $grey2;
+        background-color: #fff;
+        color: $blue;
+        height: 32px;
+        font: 500 12px/32px $font;
+        padding: 0 16px;
+        margin-right: 8px;
+        @include radius(16px);
+        @include transition(all .4s ease-in-out);
+        &:focus{
+            outline: none;
+        }
+        &:hover{
+            border-color: $blue;
+        }
+    }
 }
 
-.accordion-title__row {
-    display: flex;
-    align-items: center;
-}
-
-.accordion-title__row--margin-bottom {
-    margin-bottom: 8px;
-}
-
-.accordion-title__row--with-arrow {
-    color: #666666;
-    font-family: $font;
-    font-size: 15px;
-    line-height: 24px;
-}
-
-.accordion-title__arrow {
-    margin: 0 1%;
-}
-
-.card__custodian-name {
-    color: #333333;
-    font-family: $font;
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 20px;
-    padding: 0;
-}
-
-.accordion-title__bottom_row {
-    margin-top: 16px;
-    padding: 0;
-    display: flex;
-    align-items: center;
-    color: #333333;
-    font-family: $font;
-    font-size: 15px;
-    line-height: 24px;
-}
-
-.accordion-title__marker-icon {
-    width: 19px;
-    margin-bottom: 3px;
-    margin-right: 3px;
+.accordion{
+    .title{
+        padding: 0 !important;
+    }
+    &-title__row {
+        display: flex;
+        align-items: center;
+        &--margin-bottom {
+            margin-bottom: 8px;
+        }
+        &--with-arrow {
+            color: $grey;
+            font: 15px/24px $font;
+        }
+    }
+    &-title__arrow {
+        margin: 0 1%;
+    }
+    &-title__bottom_row {
+        margin-top: 16px;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: $dark;
+        font: 15px/24px $font;
+        &--margin {
+            margin-bottom: 6px;
+        }
+    }
+    &-title__marker-icon {
+        width: 19px;
+        margin: 0 3px 3px 0;
+    }
+    &-title__clock-icon {
+        margin: 0 4px 0 1px;
+    }
 }
 
 .no-padding {
     padding: 0 !important;
-}
-
-.accordion-title__clock-icon {
-    margin-left: 1px;
-    margin-right: 4px;
-}
-
-.card__button {
-    box-sizing: border-box;
-    border: 1.5px solid #E7E7E7;
-    border-radius: 16px;
-    background-color: #FFFFFF;
-    color: #297CBB;
-}
-
-.card__button {
-    box-sizing: border-box;
-    border: 1.5px solid #E7E7E7;
-    border-radius: 16px;
-    background-color: #FFFFFF;
-    color: #297CBB;
-}
-
-.card__button span {
-    color: #297CBB;
-    font-family: $font;
-    font-size: 12px;
-    font-weight: 500;
-    line-height: 15px;
-}
-
-.card__button:focus {
-    outline: 0 !important;
-}
-
-.accordion-title__bottom_row--margin {
-    margin-bottom: 6px;
-}
-
-.card__title {
-    color: #666666;
-    font-family: Inter;
-    font-size: 15px;
-    line-height: 20px;
-}
-
-.card__description {
-    color: #333333;
-    font-family: Inter;
-    font-size: 15px;
-    line-height: 20px;
 }

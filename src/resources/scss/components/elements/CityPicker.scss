@@ -1,4 +1,5 @@
 @import "../../variables";
+@import "../../mixins";
 
 .city-picker__marker {
     height: 17px;
@@ -6,6 +7,6 @@
 }
 
 .city-picker__dropdown {
-    color: $color;
+    color: $grey;
     font-family: $font;
 }
