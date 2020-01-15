@@ -1,9 +1,40 @@
+@import "../../variables";
+@import "../../mixins";
+
 .service-selector {
     height: 40px;
     display: flex;
     align-items: center;
-}
-
-.service-selector--border {
-    border-right: 1px #D8D8D8 solid;
+    &--border {
+        border-right: 1px solid #D8D8D8;
+    }
+    @media only screen and (max-width: #{$tablets-big}){
+        &:first-child{
+            .ui.scrolling.dropdown .menu{
+                left: 0 !important;
+                right: auto !important;
+            }
+        }
+        &:nth-child(3){
+            .ui.scrolling.dropdown .menu{
+                left: 0 !important;
+                right: auto !important;
+            }
+        }
+        &:last-child{
+            .ui.scrolling.dropdown .menu{
+                left: auto !important;
+                right: 0 !important;
+            }
+        }
+    }
+    @media only screen and (max-width: #{$tablets}){
+        flex-basis: 100%;
+        &:last-child{
+            .ui.scrolling.dropdown .menu{
+                left: 0 !important;
+                right: auto !important;
+            }
+        }
+    }
 }
