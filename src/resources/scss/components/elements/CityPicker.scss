@@ -1,12 +1,19 @@
 @import "../../variables";
 @import "../../mixins";
 
-.city-picker__marker {
-    height: 17px;
-    margin-right: 3px;
-}
-
-.city-picker__dropdown {
-    color: $grey;
-    font-family: $font;
+.city-picker{
+    &__marker {
+        height: 17px;
+        margin-right: 3px;
+    }
+    &__dropdown {
+        color: $grey;
+        font-family: $font;
+    }
+    .menu{
+        @media only screen and (max-width: #{$tablets-big}){
+            left: auto !important;
+            right: 0;
+        }
+    }
 }

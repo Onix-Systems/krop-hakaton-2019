@@ -5,18 +5,18 @@ $dark: #333;
 $green: #0b2e13;
 $blue: #297CBB;
 
-$screen-min: 320px;
-$screen-min-s: 400px;
-$screen-xxs: 565px;
-$screen-xs: 767px;
-$screen-sm: 991px;
-$screen-md: 1199px;
-$screen-lg: 1400px;
+$phones-mini: 320px;
+$phones: 400px;
+$phones-big: 565px;
+$tablets: 767px;
+$tablets-big: 991px;
+$desktop: 1199px;
+$full-hd: 1400px;
 
-$phones-mini:only screen and (max-width: #{$screen-min-s});
-$phones:only screen and (max-width: #{$screen-min-s});
-$phones-big: only screen and (max-width: #{$screen-xxs});
-$tablets: only screen and (max-width: #{$screen-xs});
-$tablets-big: only screen and (max-width: #{$screen-sm});
-$desktop: only screen and (max-width: #{$screen-md});
-$full-hd: only screen and (max-width: #{$screen-lg});
+//@media only screen and (max-width: #{$phones-mini})
+//@media only screen and (max-width: #{$phones})
+//@media only screen and (max-width: #{$phones-big})
+//@media only screen and (max-width: #{$tablets})
+//@media only screen and (max-width: #{$tablets-big})
+//@media only screen and (max-width: #{$desktop})
+//@media only screen and (max-width: #{$full-hd})
