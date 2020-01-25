@@ -3,6 +3,7 @@ import Header from '../../layouts/Header/Header';
 import Body from '../../layouts/Body/Body';
 import Loader from '../../layouts/Loader/Loader';
 import Error from '../../layouts/Error/Error';
+import FlashMessage from '../../elements/FlashMessage/FlashMessage';
 
 const AppView = ({ loading, notFound, error }) => {
   let content;
@@ -18,6 +19,11 @@ const AppView = ({ loading, notFound, error }) => {
 
   return (
     <div className="app">
+      <FlashMessage
+        text="My awesome flash message"
+        type="error"
+        show
+      />
       <Header />
       {content}
     </div>

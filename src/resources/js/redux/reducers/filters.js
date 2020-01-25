@@ -1,13 +1,13 @@
 import initialState from '../initialState';
-import { CHANGE_FILTER } from '../actions/filters';
+import { CHANGE_FILTERS } from '../actions/filters';
 
 const filtersReducer = (state = initialState.filters, action) => {
   switch (action.type) {
-    case CHANGE_FILTER:
-      return {
-        ...state,
-        [action.name]: action.value,
-      };
+    case CHANGE_FILTERS:
+      return Object.keys(action.filters).reduce((accumulator, filter) => ({
+        ...accumulator,
+        [filter]: action.filters[filter],
+      }), { ...state });
     default:
       return state;
   }

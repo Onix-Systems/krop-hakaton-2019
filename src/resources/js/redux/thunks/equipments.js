@@ -1,5 +1,6 @@
 import { equipmentsChanged, equipmentsNotFound, equipmentsFailure } from '../actions/equipments';
 import { hideLoading, showLoading } from '../actions/loading';
+import { createQueryString } from '../../helpers';
 
 export const fetchEquipments = () => async (dispatch) => {
   try {
@@ -22,18 +23,7 @@ export const fetchEquipments = () => async (dispatch) => {
 
 export const filterEquipments = () => async (dispatch, getState) => {
   const { filters } = getState();
-
-  const query = Object.keys(filters).reduce((accumulator, filter) => {
-    const filterValue = filters[filter];
-    if (filterValue) {
-      accumulator.append(filter, filterValue);
-    }
-    return accumulator;
-  }, new URLSearchParams());
-
-  const queryString = query.keys().next().value
-    ? decodeURI(`?${query.toString()}`)
-    : '';
+  const queryString = createQueryString(filters);
 
   dispatch(showLoading());
   try {

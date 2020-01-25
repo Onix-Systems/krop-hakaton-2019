@@ -33,6 +33,9 @@ class SearchService extends AppService
         if (isset($filters['address_locality'])) {
             $query->where(['address_locality' => $filters['address_locality']]);
         }
+        if (isset($filters['id_u'])) {
+            $query->where(['id_u' => $filters['id_u']]);
+        }
 
         return $query->get();
     }
