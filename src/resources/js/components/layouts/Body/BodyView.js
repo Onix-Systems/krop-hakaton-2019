@@ -3,11 +3,11 @@ import List from '../../elements/List/List';
 import Map from '../../elements/Map/Map';
 
 const BodyView = () => (
-  <div className="body container-fluid pr-0 pt-5">
-    <div className="col-6 pt-5">
+  <div className="body container-fluid">
+    <div className="col-xl-6 order-xl-1 order-2">
       <List />
     </div>
-    <div className="col-6 p-0 pt-4 mt-2">
+    <div className="col-xl-6 order-xl-2 order-1">
       <Map />
     </div>
   </div>

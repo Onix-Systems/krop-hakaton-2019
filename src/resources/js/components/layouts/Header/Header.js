@@ -88,16 +88,16 @@ class Header extends Component {
 
     return (
       <div className="header container-fluid">
-        <div className="col-1">
+        <div className="col-lg-1 col-sm-6 header__logo">
           <Logo />
         </div>
-        <div className="col-2">
+        <div className="col-lg-2 col-sm-6 header__location">
           <CityPicker />
         </div>
-        <div className="col-3">
+        <div className="col-lg-3 col-sm-12 header__search">
           <SearchField />
         </div>
-        <div className="col-6 header__services">
+        <div className="col-lg-6 col-sm-12 header__services">
           <ServiceSelector
             label="Підгрупа мед. послуг"
             value={diagnosticSubgroup}

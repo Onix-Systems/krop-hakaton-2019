@@ -1,3 +1,17 @@
 .body {
-    display: flex
+    display: flex;
+    margin-top: 70px;
+    padding: 0;
+    @media only screen and (max-width: #{$desktop}){
+        flex-wrap: wrap;
+    }
+    @media only screen and (max-width: #{$tablets-big}){
+        margin-top: 180px;
+    }
+    @media only screen and (max-width: #{$tablets}){
+        margin-top: 260px;
+    }
+    @media only screen and (max-width: #{$phones-big}){
+        margin-top: 0;
+    }
 }

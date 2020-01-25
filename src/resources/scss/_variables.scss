@@ -1,3 +1,22 @@
 $font: 'Inter', sans-serif;
-$color: #666666;
+$grey: #666;
+$grey2: #E7E7E7;
+$dark: #333;
+$green: #0b2e13;
+$blue: #297CBB;
 
+$phones-mini: 320px;
+$phones: 400px;
+$phones-big: 565px;
+$tablets: 767px;
+$tablets-big: 991px;
+$desktop: 1199px;
+$full-hd: 1400px;
+
+//@media only screen and (max-width: #{$phones-mini})
+//@media only screen and (max-width: #{$phones})
+//@media only screen and (max-width: #{$phones-big})
+//@media only screen and (max-width: #{$tablets})
+//@media only screen and (max-width: #{$tablets-big})
+//@media only screen and (max-width: #{$desktop})
+//@media only screen and (max-width: #{$full-hd})

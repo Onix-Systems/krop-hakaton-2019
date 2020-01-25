@@ -1,28 +1,72 @@
+@import "../../variables";
+@import "../../mixins";
+
 .header {
     display: flex;
-    align-items: center ;
+    top: 0;
+    left: 0;
+    align-items: center;
     height: 70px;
-    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.15);
     position: fixed;
     background-color: #fff;
     z-index: 10000;
-}
+    @media only screen and (max-width: #{$tablets-big}){
+        flex-wrap: wrap;
+        height: auto;
+        padding: 10px 0;
+    }
+    @media only screen and (max-width: #{$phones-big}){
+        position: static;
+    }
+    @include box-shadow(0 2px 5px 0 rgba(0,0,0,0.15));
+    &__logo{
+        padding-left: 0;
+        @media only screen and (max-width: #{$tablets-big}){
+            padding-left: 15px;
+        }
+        @media only screen and (max-width: #{$phones-big}){
+            text-align: center;
+        }
+    }
+    &__location{
+        padding: 0;
+        @media only screen and (max-width: #{$tablets-big}){
+            padding: 0 15px;
+            text-align: right;
+        }
+        @media only screen and (max-width: #{$phones-big}){
+            text-align: center;
+            margin-top: 10px;
+        }
+    }
+    &__search{
+        @media only screen and (max-width: #{$tablets-big}){
+            padding: 15px;
+        }
+    }
+    &__services {
+        display: flex !important;
+        align-items: center;
+        justify-content: space-between;
+        @media only screen and (max-width: #{$tablets-big}){
+            justify-content: space-around;
+        }
+        @media only screen and (max-width: #{$tablets}){
+            flex-wrap: wrap;
+        }
+    }
+    &__divider {
+        height: 40px;
+        width: 1px;
+        background-color: #D8D8D8;
+        @media only screen and (max-width: #{$tablets-big}){
+            display: none;
+        }
+    }
 
-.header__services {
-    display: flex !important;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.header__divider {
-    height: 40px;
-    width: 1px;
-    background-color: #D8D8D8;
-}
-
-@media screen and (max-width: 1024px) {
-    .header {
-        font-size: 0.9em;
+    .ui.dropdown .menu>.item{
+        @media only screen and (max-width: #{$phones-big}){
+            white-space: normal;
+        }
     }
 }
-

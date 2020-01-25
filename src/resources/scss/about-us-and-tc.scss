@@ -1,14 +1,14 @@
+@import "variables";
+@import "mixins";
 @import "components/layouts/Header";
 @import "components/elements/Logo";
 
 .public__oferta {
-    color: #666;
+    color: $grey;
 }
 
 .site-content p, li {
-    font-weight: 400;
-    line-height: 28px;
-    font-size: 16px;
+    font: 400 16px/28px $font;
 }
 
 ol {
@@ -43,10 +43,9 @@ li ol > li:before {
 }
 
 .root a {
-    color: #0b2e13;
-}
-
-.root a:hover {
-    color: #0b2e13;
-    text-decoration: none;
+    color: $green;
+    &:hover {
+        color: $green;
+        text-decoration: none;
+    }
 }
