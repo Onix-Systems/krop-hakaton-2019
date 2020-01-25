@@ -1,0 +1,19 @@
+@import "../../variables";
+
+.error {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.error-icon {
+    width: 100px;
+    height: 100px;
+}
+
+.error-text {
+    margin-left: 20px;
+    color: $dark;
+    font: 800 24px/29px $font;
+}

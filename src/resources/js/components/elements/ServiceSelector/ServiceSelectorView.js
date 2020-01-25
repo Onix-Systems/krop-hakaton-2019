@@ -3,8 +3,9 @@ import { Dropdown, Icon } from 'semantic-ui-react';
 import classNames from 'classnames';
 
 const ServiceSelectorView = ({
-  value, label, options, rightBorder, onServiceChanged,
+  selected, label, options, rightBorder, onServiceChanged, disabled
 }) => {
+  const onClear = (event) => onServiceChanged(event, { value: '' });
   return (
     <div className={classNames('service-selector', {
       'service-selector--border': rightBorder,
@@ -16,13 +17,22 @@ const ServiceSelectorView = ({
             <Icon name="angle down" />
           </span>
         )}
-        value={value}
-        text={label}
+        value={selected.value}
+        text={selected.value || label}
         onChange={onServiceChanged}
         options={options}
+        disabled={disabled}
         scrolling
         direction="left"
       />
+      {selected.value && (
+        <div
+          onClick={onClear}
+          className="service-selector__clear_icon"
+        >
+          <Icon name="times circle outline" />
+        </div>
+      )}
     </div>
   );
 };

@@ -1,44 +1,51 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import SearchFieldView from './SearchFieldView';
-import { bindActionCreators } from 'redux';
-import filterAction from '../../actions/filters';
+import applyFilterToEquipmentsAction from '../../../redux/thunks/filters';
+import { changeFilter as changeFilterAction } from '../../../redux/actions/filters';
+import { mapFilterToDropdownProp } from '../../../helpers';
 
 class SearchField extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      value: { text: '', value: '' },
-    };
+  onChange = (value) => {
+    const { changeFilter, applyFilterToEquipments } = this.props;
+    if (value.length > 2 || !value) {
+      applyFilterToEquipments('q', value);
+    } else {
+      changeFilter('q', value);
+    }
   }
 
-  onSearchChanged = (event, { value }) => {
-    const { options } = this.props;
-    filter({ filterType: 'search', value });
-    this.setState({
-      value: options.find((option) => option.value === value),
-    });
+  onSearchChanged = (event, { value: newValue }) => {
+    this.onChange(newValue);
+  }
+
+  onSearchQueryChanged = (event, { searchQuery: value }) => {
+    this.onChange(value);
   }
 
   render() {
-    const { value } = this.state;
-    const { options } = this.props;
+    const { options, loading, value } = this.props;
     return (
       <SearchFieldView
         options={options}
         value={value}
         onSearchChanged={this.onSearchChanged}
+        onSearchQueryChanged={this.onSearchQueryChanged}
+        disabled={loading}
       />
     );
   }
 }
 
 const mapStateToProps = (state) => ({
-  options: state.availableFilters.search,
+  options: state.availableFilters.q,
+  value: mapFilterToDropdownProp(state.filters.q),
+  loading: state.loading,
 });
 
-const mapDispatchToProps = (dispatch) => bindActionCreators({
-  filter: filterAction,
-}, dispatch);
+const mapDispatchToProps = {
+  applyFilterToEquipments: applyFilterToEquipmentsAction,
+  changeFilter: changeFilterAction,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(SearchField);
