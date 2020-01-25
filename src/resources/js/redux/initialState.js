@@ -14,7 +14,6 @@ export default {
     work_schedule: [],
   },
   filters: {
-    id_q: '',
     address_locality: 'Кропивницький',
     q: '', // custodianName or diagnosticType
     diagnostic_subgroup: '',

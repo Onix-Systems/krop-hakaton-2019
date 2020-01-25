@@ -7,7 +7,7 @@ import { mapFilterToDropdownProp } from '../../../helpers';
 class CityPicker extends Component {
   onCityChanged = (event, { value }) => {
     const { applyFiltersToEquipments } = this.props;
-    applyFilterToEquipments({ address_locality: value });
+    applyFiltersToEquipments({ address_locality: value });
   };
 
   render() {

@@ -2,19 +2,17 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import AppView from './AppView';
-import { fetchEquipments as fetchEquipmentsAction } from '../../../redux/thunks/equipments';
-import { applyFiltersToEquipments as applyFiltersToEquipmentsAction } from '../../../redux/thunks/filters';
+import {
+  fetchEquipments as fetchEquipmentsAction,
+  fetchUniqueEquipment as fetchUniqueEquipmentAction,
+} from '../../../redux/thunks/equipments';
 
 class App extends Component {
   componentDidMount() {
-    console.log(this.props)
-    const { location, fetchEquipments, applyFiltersToEquipments } = this.props;
+    const { location, fetchEquipments, fetchUniqueEquipment } = this.props;
     const query = new URLSearchParams(location.search);
     if (query.has('id_u')) {
-      applyFiltersToEquipments({
-        id_u: query.get('id_u'),
-        address_locality: '',
-      });
+      fetchUniqueEquipment(query.get('id_u'));
     } else {
       fetchEquipments();
     }
@@ -40,7 +38,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
   fetchEquipments: fetchEquipmentsAction,
-  applyFiltersToEquipments: applyFiltersToEquipmentsAction,
+  fetchUniqueEquipment: fetchUniqueEquipmentAction,
 };
 
 export default withRouter(

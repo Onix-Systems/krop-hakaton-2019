@@ -2,7 +2,7 @@ import React from 'react';
 import {Map as LeafletMap, TileLayer, Marker, Popup} from 'react-leaflet';
 import {connect} from "react-redux";
 
-
+//todo refactor this component
 const customMarker = new L.icon({
   iconUrl: "https://unpkg.com/leaflet@1.4.0/dist/images/marker-icon.png",
 });
@@ -10,7 +10,10 @@ const customMarker = new L.icon({
 class MapView extends React.Component {
 
   render() {
-    let array = this.props.equipments
+    const { equipments, selectedEquipment } = this.props;
+    const array = selectedEquipment
+      ? [selectedEquipment]
+      : equipments;
 
     const result = Array.from(new Set(array.map(s => s.latitude)))
       .map(latitude => {
@@ -58,6 +61,7 @@ class MapView extends React.Component {
 
 const mapStateToProps = (state) => ({
   equipments: state.equipments.filtered,
+  selectedEquipment: state.equipments.selected,
   error: state.equipments.error,
 });
 
