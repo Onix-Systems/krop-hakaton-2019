@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import SearchFieldView from './SearchFieldView';
-import applyFilterToEquipmentsAction from '../../../redux/thunks/filters';
-import { changeFilter as changeFilterAction } from '../../../redux/actions/filters';
+import applyFiltersToEquipmentsAction from '../../../redux/thunks/filters';
+import { changeFilters as changeFiltersAction } from '../../../redux/actions/filters';
 import { mapFilterToDropdownProp } from '../../../helpers';
 
 class SearchField extends Component {
   onChange = (value) => {
-    const { changeFilter, applyFilterToEquipments } = this.props;
+    const { changeFilters, applyFiltersToEquipments } = this.props;
     if (value.length > 2 || !value) {
-      applyFilterToEquipments('q', value);
+      applyFiltersToEquipments({ q: value });
     } else {
-      changeFilter('q', value);
+      changeFilters({ q: value });
     }
   }
 
@@ -44,8 +44,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = {
-  applyFilterToEquipments: applyFilterToEquipmentsAction,
-  changeFilter: changeFilterAction,
+  applyFiltersToEquipments: applyFiltersToEquipmentsAction,
+  changeFilters: changeFiltersAction,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(SearchField);

@@ -4,10 +4,11 @@ import ListView from './ListView';
 
 class List extends Component {
   render() {
-    const { equipments } = this.props;
+    const { equipments, selectedEquipment } = this.props;
     return (
       <ListView
         equipments={equipments}
+        selectedEquipment={selectedEquipment}
       />
     );
   }
@@ -15,7 +16,7 @@ class List extends Component {
 
 const mapStateToProps = (state) => ({
   equipments: state.equipments.filtered,
-  filters: state.filters,
+  selectedEquipment: state.equipments.selected,
 });
 
 export default connect(mapStateToProps)(List);

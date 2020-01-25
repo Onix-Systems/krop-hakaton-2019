@@ -1,5 +1,11 @@
-import { equipmentsChanged, equipmentsNotFound, equipmentsFailure } from '../actions/equipments';
+import {
+  equipmentsChanged,
+  uniqueEquipmentSelected,
+  equipmentsNotFound,
+  equipmentsFailure,
+} from '../actions/equipments';
 import { hideLoading, showLoading } from '../actions/loading';
+import { createQueryString } from '../../helpers';
 
 export const fetchEquipments = () => async (dispatch) => {
   try {
@@ -22,18 +28,7 @@ export const fetchEquipments = () => async (dispatch) => {
 
 export const filterEquipments = () => async (dispatch, getState) => {
   const { filters } = getState();
-
-  const query = Object.keys(filters).reduce((accumulator, filter) => {
-    const filterValue = filters[filter];
-    if (filterValue) {
-      accumulator.append(filter, filterValue);
-    }
-    return accumulator;
-  }, new URLSearchParams());
-
-  const queryString = query.keys().next().value
-    ? decodeURI(`?${query.toString()}`)
-    : '';
+  const queryString = createQueryString(filters);
 
   dispatch(showLoading());
   try {
@@ -41,6 +36,27 @@ export const filterEquipments = () => async (dispatch, getState) => {
     if (response.status === 200) {
       const body = await response.json();
       dispatch(equipmentsChanged(body.data.search_result));
+    } else if (response.status === 404) {
+      dispatch(equipmentsNotFound());
+    } else {
+      dispatch(equipmentsFailure());
+    }
+  } catch (e) {
+    dispatch(equipmentsFailure());
+  } finally {
+    dispatch(hideLoading());
+  }
+};
+
+export const fetchUniqueEquipment = (hash) => async (dispatch) => {
+  const queryString = createQueryString({ id_u: hash });
+
+  dispatch(showLoading());
+  try {
+    const response = await fetch(`/api/search${queryString}`);
+    if (response.status === 200) {
+      const body = await response.json();
+      dispatch(uniqueEquipmentSelected(body.data.search_result[0]));
     } else if (response.status === 404) {
       dispatch(equipmentsNotFound());
     } else {

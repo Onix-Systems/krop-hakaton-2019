@@ -4,7 +4,7 @@ import ExpandIcon from './components/ExpandIcon';
 import MarkerIcon from '../../../../images/svg/location-pin.svg';
 
 const CardView = ({
-  equipment, expand, onExpandClicked,
+  equipment, expand, onExpandClicked, onShareClicked
 }) => (
   <div className="card">
     <Accordion fluid>
@@ -14,7 +14,8 @@ const CardView = ({
             {!expand ? equipment.custodian_name :
               <div className="container-fluid">
                 <div className="row">
-                  <button className="card__button accordion-title__bottom_row--margin">
+                  <button className="card__button accordion-title__bottom_row--margin"
+                          onClick={onShareClicked}>
                     ПОДІЛИТИСЯ
                   </button>
 
@@ -67,7 +68,8 @@ const CardView = ({
               </div>
             </div>
             <div className="col-sm-6 text-right no-padding">
-              <button className="card__button col-sm-9 accordion-title__bottom_row--margin">
+              <button className="card__button col-sm-9 accordion-title__bottom_row--margin"
+                      onClick={onShareClicked}>
                 <span>ПОДІЛИТИСЯ</span>
               </button>
               <button className="card__button col-sm-9">

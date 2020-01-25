@@ -1,9 +1,9 @@
-import { changeFilter } from '../actions/filters';
+import { changeFilters } from '../actions/filters';
 import { filterEquipments } from './equipments';
 
-const applyFilterToEquipments = (filterName, filterValue) => (dispatch) => {
-  dispatch(changeFilter(filterName, filterValue));
+export const applyFiltersToEquipments = (filters) => (dispatch) => {
+  dispatch(changeFilters(filters));
   dispatch(filterEquipments());
 };
 
-export default applyFilterToEquipments;
+export default applyFiltersToEquipments;

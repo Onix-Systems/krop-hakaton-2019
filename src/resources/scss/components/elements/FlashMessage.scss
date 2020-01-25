@@ -1,0 +1,10 @@
+.flash-message {
+    left: 20px;
+    top: 10px;
+    position: fixed;
+    z-index: 10001;
+}
+
+.flash-message__text {
+    padding: 15px;
+}

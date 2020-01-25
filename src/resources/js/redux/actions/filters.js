@@ -1,7 +1,6 @@
-export const CHANGE_FILTER = 'CHANGE_FILTER';
+export const CHANGE_FILTERS = 'CHANGE_FILTERS';
 
-export const changeFilter = (name, value) => ({
-  type: CHANGE_FILTER,
-  name,
-  value,
+export const changeFilters = (filters) => ({
+  type: CHANGE_FILTERS,
+  filters,
 });

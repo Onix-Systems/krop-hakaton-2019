@@ -2,22 +2,24 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import AppView from './AppView';
-import { fetchEquipments as fetchEquipmentsAction } from '../../../redux/thunks/equipments';
+import {
+  fetchEquipments as fetchEquipmentsAction,
+  fetchUniqueEquipment as fetchUniqueEquipmentAction,
+} from '../../../redux/thunks/equipments';
 
 class App extends Component {
   componentDidMount() {
-    const { fetchEquipments } = this.props;
-    fetchEquipments();
+    const { location, fetchEquipments, fetchUniqueEquipment } = this.props;
+    const query = new URLSearchParams(location.search);
+    if (query.has('id_u')) {
+      fetchUniqueEquipment(query.get('id_u'));
+    } else {
+      fetchEquipments();
+    }
   }
 
   render() {
-    const {
-      location,
-      loading,
-      notFound,
-      error
-    } = this.props;
-    const query = new URLSearchParams(location.search);
+    const { loading, notFound, error } = this.props;
     return (
       <AppView
         notFound={notFound}
@@ -36,6 +38,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
   fetchEquipments: fetchEquipmentsAction,
+  fetchUniqueEquipment: fetchUniqueEquipmentAction,
 };
 
 export default withRouter(

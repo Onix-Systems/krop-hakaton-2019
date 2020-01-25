@@ -1,5 +1,10 @@
 import initialState from '../initialState';
-import { EQUIPMENTS_CHANGED, EQUIPMENTS_FAILURE, EQUIPMENTS_NOT_FOUND } from '../actions/equipments';
+import {
+  EQUIPMENTS_CHANGED,
+  EQUIPMENTS_FAILURE,
+  EQUIPMENTS_NOT_FOUND,
+  UNIQUE_EQUIPMENT_SELECTED,
+} from '../actions/equipments';
 
 const equipmentsReducer = (state = initialState.equipments, action) => {
   switch (action.type) {
@@ -9,6 +14,15 @@ const equipmentsReducer = (state = initialState.equipments, action) => {
         error: false,
         notFound: false,
         filtered: action.equipments,
+        selected: null,
+      };
+    case UNIQUE_EQUIPMENT_SELECTED:
+      return {
+        ...state,
+        error: false,
+        notFound: false,
+        filtered: [],
+        selected: action.equipment,
       };
     case EQUIPMENTS_NOT_FOUND:
       return {

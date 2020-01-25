@@ -5,8 +5,8 @@ import CityPicker from '../../elements/CityPicker/CityPicker';
 import SearchField from '../../elements/SearchField/SearchField';
 import ServiceSelector from '../../elements/ServiceSelector/ServiceSelector';
 import fetchAvailableFiltersAction from '../../../redux/thunks/availableFilters';
-import applyFilterToEquipmentsAction from '../../../redux/thunks/filters'
-import { mapFilterToDropdownProp } from '../../../helpers'
+import { applyFiltersToEquipments as applyFiltersToEquipmentsAction } from '../../../redux/thunks/filters';
+import { mapFilterToDropdownProp } from '../../../helpers';
 
 class Header extends Component {
   componentDidMount() {
@@ -15,18 +15,18 @@ class Header extends Component {
   }
 
   onSubgroupChanged = (event, { value }) => {
-    const { applyFilterToEquipments } = this.props;
-    applyFilterToEquipments('diagnostic_subgroup', value);
+    const { applyFiltersToEquipments } = this.props;
+    applyFiltersToEquipments({ diagnostic_subgroup: value });
   };
 
   onTypeChanged = (event, { value }) => {
-    const { applyFilterToEquipments } = this.props;
-    applyFilterToEquipments('diagnostic_type', value);
+    const { applyFiltersToEquipments } = this.props;
+    applyFiltersToEquipments({ diagnostic_type: value });
   };
 
   onScheduleChanged = (event, { value }) => {
-    const { applyFilterToEquipments } = this.props;
-    applyFilterToEquipments('work_schedule', value);
+    const { applyFiltersToEquipments } = this.props;
+    applyFiltersToEquipments({ work_schedule: value });
   };
 
   render() {
@@ -93,7 +93,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
   fetchAvailableFilters: fetchAvailableFiltersAction,
-  applyFilterToEquipments: applyFilterToEquipmentsAction,
+  applyFiltersToEquipments: applyFiltersToEquipmentsAction,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

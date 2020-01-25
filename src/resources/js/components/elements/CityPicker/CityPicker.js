@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import CityPickerView from './CityPickerView';
-import applyFilterToEquipmentsAction from '../../../redux/thunks/filters';
+import applyFiltersToEquipmentsAction from '../../../redux/thunks/filters';
 import { mapFilterToDropdownProp } from '../../../helpers';
 
 class CityPicker extends Component {
   onCityChanged = (event, { value }) => {
-    const { applyFilterToEquipments } = this.props;
-    applyFilterToEquipments('address_locality', value);
+    const { applyFiltersToEquipments } = this.props;
+    applyFiltersToEquipments({ address_locality: value });
   };
 
   render() {
@@ -30,7 +30,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = {
-  applyFilterToEquipments: applyFilterToEquipmentsAction,
+  applyFiltersToEquipments: applyFiltersToEquipmentsAction,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(CityPicker);

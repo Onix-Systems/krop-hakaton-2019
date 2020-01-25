@@ -14,7 +14,7 @@ class AddColumnForUniqueHash extends Migration
     public function up()
     {
         Schema::table('file_table_with_content', function (Blueprint $table) {
-            $table->string('id_u')->nullable(false)->unique();
+            $table->string('id_u')->nullable(false)->unique(); //todo field to hash
         });
 
         Schema::rename('file_table_with_content', 'equipments');
