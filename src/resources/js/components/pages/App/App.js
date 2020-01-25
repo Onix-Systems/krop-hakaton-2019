@@ -2,28 +2,40 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import AppView from './AppView';
-import { fetchEquipments } from '../../../redux/asyncActions/equipments'
+import { fetchEquipments as fetchEquipmentsAction } from '../../../redux/thunks/equipments';
 
 class App extends Component {
   componentDidMount() {
-    this.props.fetchEquipments();
+    const { fetchEquipments } = this.props;
+    fetchEquipments();
   }
 
   render() {
-    const {location, isLoading} = this.props;
+    const {
+      location,
+      loading,
+      notFound,
+      error
+    } = this.props;
     const query = new URLSearchParams(location.search);
     return (
-      <AppView isLoading={isLoading} />
+      <AppView
+        notFound={notFound}
+        error={error}
+        loading={loading}
+      />
     );
   }
 }
 
 const mapStateToProps = (state) => ({
-  isLoading: state.equipments.fetching,
+  loading: state.loading,
+  notFound: state.equipments.notFound,
+  error: state.equipments.error,
 });
 
 const mapDispatchToProps = {
-  fetchEquipments,
+  fetchEquipments: fetchEquipmentsAction,
 };
 
 export default withRouter(

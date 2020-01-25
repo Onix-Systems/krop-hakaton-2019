@@ -1,30 +1,28 @@
 import initialState from '../initialState';
-import { FETCHING_EQUIPMENTS, FILTER_EQUIPMENTS } from '../actionTypes/equipments';
+import { EQUIPMENTS_CHANGED, EQUIPMENTS_FAILURE, EQUIPMENTS_NOT_FOUND } from '../actions/equipments';
 
-const equipmentsReducer = (state = initialState, action) => {
+const equipmentsReducer = (state = initialState.equipments, action) => {
   switch (action.type) {
-    case FETCHING_EQUIPMENTS:
-      console.log('FETCHING_EQUIPMENTS');
+    case EQUIPMENTS_CHANGED:
       return {
         ...state,
-        equipments: {
-          ...state.equipments,
-          fetching: true,
-        },
+        error: false,
+        notFound: false,
+        filtered: action.equipments,
       };
-    case FILTER_EQUIPMENTS:
-      console.log('FILTER_EQUIPMENTS');
+    case EQUIPMENTS_NOT_FOUND:
       return {
         ...state,
-        equipments: {
-          ...state.equipments,
-          filtered: action.equipments,
-          fetching: false,
-        },
-        filters: {
-          ...state.filters,
-          ...action.filters,
-        },
+        error: false,
+        notFound: true,
+        filtered: [],
+      };
+    case EQUIPMENTS_FAILURE:
+      return {
+        ...state,
+        error: true,
+        notFound: false,
+        filtered: [],
       };
     default:
       return state;

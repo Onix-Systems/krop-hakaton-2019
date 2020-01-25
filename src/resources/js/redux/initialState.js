@@ -1,6 +1,6 @@
 export default {
+  loading: true,
   equipments: {
-    fetching: false,
     notFound: false,
     error: false,
     filtered: [],
@@ -16,9 +16,9 @@ export default {
   filters: {
     hash: null,
     address_locality: 'Кропивницький',
-    q: null, // custodianName or diagnosticType
-    diagnostic_subgroup: null,
-    diagnostic_type: null,
-    work_schedule: null,
+    q: '', // custodianName or diagnosticType
+    diagnostic_subgroup: '',
+    diagnostic_type: '',
+    work_schedule: '',
   },
 };

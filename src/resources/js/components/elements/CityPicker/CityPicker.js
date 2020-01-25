@@ -1,46 +1,22 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import CityPickerView from './CityPickerView';
-import {filterEquipments} from '../../../redux/asyncActions/equipments';
+import applyFilterToEquipmentsAction from '../../../redux/thunks/filters';
+import { mapFilterToDropdownProp } from '../../../helpers';
 
 class CityPicker extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      city: {
-        text: 'Кропивницький',
-        value: 'Кропивницький',
-        selected: true,
-      },
-    };
-  }
-
   onCityChanged = (event, { value }) => {
-    const { filters } = this.props;
-    const { city } = this.state;
-    this.props.filterEquipments({ name: 'address_locality', value }, filters);
-    this.setState({
-      city: {
-        ...city,
-        text: value,
-        value,
-      },
-    });
+    const { applyFilterToEquipments } = this.props;
+    applyFilterToEquipments('address_locality', value);
   };
 
   render() {
-    const { city } = this.state;
-    let { cities, isLoading } = this.props;
-    if (!cities.length) {
-      cities = [{ ...city }];
-    } else {
-      cities[0].selected = true;
-    }
+    let { cities, currentCity, loading } = this.props;
     return (
       <CityPickerView
-        city={city}
+        city={currentCity}
         cities={cities}
-        disabled={isLoading}
+        disabled={loading}
         onCityChanged={this.onCityChanged}
       />
     );
@@ -49,12 +25,12 @@ class CityPicker extends Component {
 
 const mapStateToProps = (state) => ({
   cities: state.availableFilters.address_locality,
-  filters: state.filters,
-  isLoading: state.equipments.fetching,
+  currentCity: mapFilterToDropdownProp(state.filters.address_locality),
+  loading: state.loading,
 });
 
 const mapDispatchToProps = {
-  filterEquipments,
+  applyFilterToEquipments: applyFilterToEquipmentsAction,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(CityPicker);

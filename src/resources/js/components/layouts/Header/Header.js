@@ -4,73 +4,29 @@ import Logo from '../../elements/Logo/Logo';
 import CityPicker from '../../elements/CityPicker/CityPicker';
 import SearchField from '../../elements/SearchField/SearchField';
 import ServiceSelector from '../../elements/ServiceSelector/ServiceSelector';
-import fetchAvailableFiltersAction from '../../../redux/asyncActions/filters'
-import { filterEquipments } from '../../../redux/asyncActions/equipments';
+import fetchAvailableFiltersAction from '../../../redux/thunks/availableFilters';
+import applyFilterToEquipmentsAction from '../../../redux/thunks/filters'
+import { mapFilterToDropdownProp } from '../../../helpers'
 
 class Header extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      diagnosticSubgroup: {
-        text: '',
-        value: '',
-        selected: true,
-      },
-      diagnosticType: {
-        text: '',
-        value: '',
-        selected: true,
-      },
-      workSchedule: {
-        text: '',
-        value: '',
-        selected: true,
-      },
-    };
-  }
-
   componentDidMount() {
     const { fetchAvailableFilters } = this.props;
     fetchAvailableFilters();
   }
 
   onSubgroupChanged = (event, { value }) => {
-    const { filters } = this.props;
-    const { diagnosticSubgroup } = this.state;
-    this.props.filterEquipments({ name: 'diagnostic_subgroup', value }, filters);
-    this.setState({
-      diagnosticSubgroup: {
-        ...diagnosticSubgroup,
-        text: value,
-        value,
-      },
-    });
+    const { applyFilterToEquipments } = this.props;
+    applyFilterToEquipments('diagnostic_subgroup', value);
   };
 
   onTypeChanged = (event, { value }) => {
-    const { filters } = this.props;
-    const { diagnosticType } = this.state;
-    this.props.filterEquipments({ name: 'diagnostic_type', value }, filters);
-    this.setState({
-      diagnosticType: {
-        ...diagnosticType,
-        text: value,
-        value,
-      },
-    });
+    const { applyFilterToEquipments } = this.props;
+    applyFilterToEquipments('diagnostic_type', value);
   };
 
   onScheduleChanged = (event, { value }) => {
-    const { filters } = this.props;
-    const { workSchedule } = this.state;
-    this.props.filterEquipments({ name: 'work_schedule', value }, filters);
-    this.setState({
-      workSchedule: {
-        ...workSchedule,
-        text: value,
-        value,
-      },
-    });
+    const { applyFilterToEquipments } = this.props;
+    applyFilterToEquipments('work_schedule', value);
   };
 
   render() {
@@ -78,13 +34,11 @@ class Header extends Component {
       subgroups,
       types,
       schedule,
-      isLoading
-    } = this.props;
-    const {
+      loading,
       diagnosticSubgroup,
       diagnosticType,
       workSchedule,
-    } = this.state;
+    } = this.props;
 
     return (
       <div className="header container-fluid">
@@ -103,7 +57,7 @@ class Header extends Component {
             value={diagnosticSubgroup}
             options={subgroups}
             onServiceChanged={this.onSubgroupChanged}
-            disabled={isLoading}
+            disabled={loading}
           />
           <div className="header__divider" />
           <ServiceSelector
@@ -111,7 +65,7 @@ class Header extends Component {
             value={diagnosticType}
             options={types}
             onServiceChanged={this.onTypeChanged}
-            disabled={isLoading}
+            disabled={loading}
           />
           <div className="header__divider" />
           <ServiceSelector
@@ -119,7 +73,7 @@ class Header extends Component {
             value={workSchedule}
             options={schedule}
             onServiceChanged={this.onScheduleChanged}
-            disabled={isLoading}
+            disabled={loading}
           />
         </div>
       </div>
@@ -131,13 +85,15 @@ const mapStateToProps = (state) => ({
   subgroups: state.availableFilters.diagnostic_subgroup,
   types: state.availableFilters.diagnostic_type,
   schedule: state.availableFilters.work_schedule,
-  filters: state.filters,
-  isLoading: state.equipments.fetching,
+  loading: state.loading,
+  diagnosticSubgroup: mapFilterToDropdownProp(state.filters.diagnostic_subgroup),
+  diagnosticType: mapFilterToDropdownProp(state.filters.diagnostic_type),
+  workSchedule: mapFilterToDropdownProp(state.filters.work_schedule),
 });
 
 const mapDispatchToProps = {
   fetchAvailableFilters: fetchAvailableFiltersAction,
-  filterEquipments,
+  applyFilterToEquipments: applyFilterToEquipmentsAction,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

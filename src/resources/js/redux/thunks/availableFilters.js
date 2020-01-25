@@ -1,12 +1,12 @@
-import availableFiltersFetched from '../actionCreators/filters';
+import { availableFiltersFailure, availableFiltersFetched } from '../actions/availableFilters';
 
 const fetchAvailableFilters = () => async (dispatch) => {
   try {
     const response = await fetch('/api/filters');
     const body = await response.json();
-    return dispatch(availableFiltersFetched(body.data));
+    dispatch(availableFiltersFetched(body.data));
   } catch (e) {
-    return dispatch(availableFiltersFetched([]));
+    dispatch(availableFiltersFailure());
   }
 };
 

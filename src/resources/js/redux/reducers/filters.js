@@ -1,23 +1,16 @@
 import initialState from '../initialState';
-import FETCH_AVAILABLE_FILTERS from '../actionTypes/filters';
+import { CHANGE_FILTER } from '../actions/filters';
 
-const mapFilters = (filters) => Object.keys(filters).reduce((result, filter) => ({
-  ...result,
-  [filter]: filters[filter].map((value) => ({
-    text: value,
-    value,
-    selected: false,
-  })),
-}), {});
-
-const filtersReducer = (state = initialState, action) => {
-  if (action.type === FETCH_AVAILABLE_FILTERS) {
-    return {
-      ...state,
-      availableFilters: mapFilters(action.availableFilters),
-    };
+const filtersReducer = (state = initialState.filters, action) => {
+  switch (action.type) {
+    case CHANGE_FILTER:
+      return {
+        ...state,
+        [action.name]: action.value,
+      };
+    default:
+      return state;
   }
-  return state;
 };
 
 export default filtersReducer;
