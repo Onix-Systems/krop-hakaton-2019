@@ -1,11 +1,12 @@
 import React from 'react';
 import Header from '../../layouts/Header/Header';
 import Body from '../../layouts/Body/Body';
+import Loader from '../../layouts/Loader/Loader';
 
-const AppView = () => (
+const AppView = ({ isLoading }) => (
   <div className="app">
     <Header />
-    <Body />
+    { isLoading ? <Loader /> : <Body /> }
   </div>
 );
 

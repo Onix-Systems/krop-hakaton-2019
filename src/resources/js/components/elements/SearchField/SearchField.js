@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import debounce from 'lodash/debounce';
 import SearchFieldView from './SearchFieldView';
-import filterEquipmentsAction from '../../../redux/asyncActions/equipments';
+import { filterEquipments } from '../../../redux/asyncActions/equipments';
 
 class SearchField extends Component {
   constructor(props) {
@@ -18,9 +17,9 @@ class SearchField extends Component {
   }
 
   onChange = (newValue) => {
-    const { filter, filters } = this.props;
+    const { filters } = this.props;
     const { value } = this.state;
-    const debouncedFilter = debounce(filter, 750);
+    const debouncedFilter = debounce(this.props.filterEquipments, 750);
     if (newValue.length > 2 || !newValue) {
       debouncedFilter({ name: 'q', value: newValue }, filters);
     }
@@ -33,7 +32,6 @@ class SearchField extends Component {
     });
   }
 
-  // todo 1) loader with locking UI
   // todo 2) handle 404
   onSearchChanged = (event, { value: newValue }) => {
     this.onChange(newValue);
@@ -45,13 +43,14 @@ class SearchField extends Component {
 
   render() {
     const { value } = this.state;
-    const { options } = this.props;
+    const { options, isLoading } = this.props;
     return (
       <SearchFieldView
         options={options}
         value={value}
         onSearchChanged={this.onSearchChanged}
         onSearchQueryChanged={this.onSearchQueryChanged}
+        disabled={isLoading}
       />
     );
   }
@@ -59,10 +58,11 @@ class SearchField extends Component {
 
 const mapStateToProps = (state) => ({
   options: state.availableFilters.q,
+  isLoading: state.equipments.fetching,
 });
 
-const mapDispatchToProps = (dispatch) => bindActionCreators({
-  filter: filterEquipmentsAction,
-}, dispatch);
+const mapDispatchToProps = {
+  filterEquipments,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(SearchField);

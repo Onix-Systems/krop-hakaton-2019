@@ -1,5 +1,8 @@
 export default {
   equipments: {
+    fetching: false,
+    notFound: false,
+    error: false,
     filtered: [],
     selected: null,
   },

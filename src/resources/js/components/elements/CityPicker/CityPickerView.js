@@ -3,7 +3,7 @@ import { Dropdown, Icon } from 'semantic-ui-react';
 import MarkerIcon from '../../../../images/svg/location-pin.svg';
 
 const CityPickerView = ({
-  city, cities, onCityChanged,
+  city, cities, onCityChanged, disabled
 }) => (
   <div className="city-picker">
     <img src={MarkerIcon} className="city-picker__marker" alt="pin" />
@@ -16,6 +16,7 @@ const CityPickerView = ({
       value={city.value}
       options={cities}
       onChange={onCityChanged}
+      disabled={disabled}
       className="city-picker__dropdown"
     />
   </div>

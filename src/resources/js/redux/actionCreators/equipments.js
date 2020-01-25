@@ -1,4 +1,11 @@
-import FILTER_EQUIPMENTS from '../actionTypes/equipments';
+import { FETCHING_EQUIPMENTS, FILTER_EQUIPMENTS } from '../actionTypes/equipments';
+
+const fetchingEquipments = () => {
+  console.log('fetchingEquipments action creators')
+  return ({
+    type: FETCHING_EQUIPMENTS,
+  });
+};
 
 const equipmentsFiltered = (equipments, filters) => ({
   type: FILTER_EQUIPMENTS,
@@ -6,4 +13,7 @@ const equipmentsFiltered = (equipments, filters) => ({
   filters,
 });
 
-export default equipmentsFiltered;
+export {
+  fetchingEquipments,
+  equipmentsFiltered,
+};

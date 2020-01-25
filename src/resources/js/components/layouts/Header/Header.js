@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import Logo from '../../elements/Logo/Logo';
 import CityPicker from '../../elements/CityPicker/CityPicker';
 import SearchField from '../../elements/SearchField/SearchField';
 import ServiceSelector from '../../elements/ServiceSelector/ServiceSelector';
 import fetchAvailableFiltersAction from '../../../redux/asyncActions/filters'
-import filterEquipments from '../../../redux/asyncActions/equipments';
+import { filterEquipments } from '../../../redux/asyncActions/equipments';
 
 class Header extends Component {
   constructor(props) {
@@ -36,9 +35,9 @@ class Header extends Component {
   }
 
   onSubgroupChanged = (event, { value }) => {
-    const { filter, filters } = this.props;
+    const { filters } = this.props;
     const { diagnosticSubgroup } = this.state;
-    filter({ name: 'diagnostic_subgroup', value }, filters);
+    this.props.filterEquipments({ name: 'diagnostic_subgroup', value }, filters);
     this.setState({
       diagnosticSubgroup: {
         ...diagnosticSubgroup,
@@ -49,9 +48,9 @@ class Header extends Component {
   };
 
   onTypeChanged = (event, { value }) => {
-    const { filter, filters } = this.props;
+    const { filters } = this.props;
     const { diagnosticType } = this.state;
-    filter({ name: 'diagnostic_type', value }, filters);
+    this.props.filterEquipments({ name: 'diagnostic_type', value }, filters);
     this.setState({
       diagnosticType: {
         ...diagnosticType,
@@ -62,9 +61,9 @@ class Header extends Component {
   };
 
   onScheduleChanged = (event, { value }) => {
-    const { filter, filters } = this.props;
+    const { filters } = this.props;
     const { workSchedule } = this.state;
-    filter({ name: 'work_schedule', value }, filters);
+    this.props.filterEquipments({ name: 'work_schedule', value }, filters);
     this.setState({
       workSchedule: {
         ...workSchedule,
@@ -79,6 +78,7 @@ class Header extends Component {
       subgroups,
       types,
       schedule,
+      isLoading
     } = this.props;
     const {
       diagnosticSubgroup,
@@ -103,6 +103,7 @@ class Header extends Component {
             value={diagnosticSubgroup}
             options={subgroups}
             onServiceChanged={this.onSubgroupChanged}
+            disabled={isLoading}
           />
           <div className="header__divider" />
           <ServiceSelector
@@ -110,6 +111,7 @@ class Header extends Component {
             value={diagnosticType}
             options={types}
             onServiceChanged={this.onTypeChanged}
+            disabled={isLoading}
           />
           <div className="header__divider" />
           <ServiceSelector
@@ -117,6 +119,7 @@ class Header extends Component {
             value={workSchedule}
             options={schedule}
             onServiceChanged={this.onScheduleChanged}
+            disabled={isLoading}
           />
         </div>
       </div>
@@ -129,11 +132,12 @@ const mapStateToProps = (state) => ({
   types: state.availableFilters.diagnostic_type,
   schedule: state.availableFilters.work_schedule,
   filters: state.filters,
+  isLoading: state.equipments.fetching,
 });
 
-const mapDispatchToProps = (dispatch) => bindActionCreators({
+const mapDispatchToProps = {
   fetchAvailableFilters: fetchAvailableFiltersAction,
-  filter: filterEquipments,
-}, dispatch);
+  filterEquipments,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

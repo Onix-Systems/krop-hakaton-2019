@@ -3,7 +3,9 @@ import ServiceSelectorView from './ServiceSelectorView';
 
 class ServiceSelector extends Component {
   render() {
-    const { onServiceChanged, value, label, options, rightBorder = false } = this.props;
+    const {
+      onServiceChanged, value, label, options, rightBorder = false, disabled
+    } = this.props;
     return (
       <ServiceSelectorView
         label={label}
@@ -11,6 +13,7 @@ class ServiceSelector extends Component {
         options={options}
         onServiceChanged={onServiceChanged}
         rightBorder={rightBorder}
+        disabled={disabled}
       />
     );
   }

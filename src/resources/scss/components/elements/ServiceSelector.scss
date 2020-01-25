@@ -5,6 +5,9 @@
     height: 40px;
     display: flex;
     align-items: center;
+    justify-content: center;
+    width: 33%;
+    padding: 0 2%;
     &--border {
         border-right: 1px solid #D8D8D8;
     }

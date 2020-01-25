@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import CityPickerView from './CityPickerView';
-import filterEquipmentsAction from '../../../redux/asyncActions/equipments';
+import {filterEquipments} from '../../../redux/asyncActions/equipments';
 
 class CityPicker extends Component {
   constructor(props) {
@@ -17,9 +16,9 @@ class CityPicker extends Component {
   }
 
   onCityChanged = (event, { value }) => {
-    const { filter, filters } = this.props;
+    const { filters } = this.props;
     const { city } = this.state;
-    filter({ name: 'address_locality', value }, filters);
+    this.props.filterEquipments({ name: 'address_locality', value }, filters);
     this.setState({
       city: {
         ...city,
@@ -31,7 +30,7 @@ class CityPicker extends Component {
 
   render() {
     const { city } = this.state;
-    let { cities } = this.props;
+    let { cities, isLoading } = this.props;
     if (!cities.length) {
       cities = [{ ...city }];
     } else {
@@ -41,6 +40,7 @@ class CityPicker extends Component {
       <CityPickerView
         city={city}
         cities={cities}
+        disabled={isLoading}
         onCityChanged={this.onCityChanged}
       />
     );
@@ -50,10 +50,11 @@ class CityPicker extends Component {
 const mapStateToProps = (state) => ({
   cities: state.availableFilters.address_locality,
   filters: state.filters,
+  isLoading: state.equipments.fetching,
 });
 
-const mapDispatchToProps = (dispatch) => bindActionCreators({
-  filter: filterEquipmentsAction,
-}, dispatch);
+const mapDispatchToProps = {
+  filterEquipments,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(CityPicker);

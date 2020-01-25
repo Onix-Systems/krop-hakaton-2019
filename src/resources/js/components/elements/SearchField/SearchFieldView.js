@@ -1,7 +1,9 @@
 import React from 'react';
 import { Dropdown, Icon } from 'semantic-ui-react';
 
-const SearchFieldView = ({ value, options, onSearchChanged, onSearchQueryChanged }) => (
+const SearchFieldView = ({
+  value, options, onSearchChanged, onSearchQueryChanged, disabled,
+}) => (
   <div className="search-field">
     <Dropdown
       className="search-field__dropdown"
@@ -16,6 +18,7 @@ const SearchFieldView = ({ value, options, onSearchChanged, onSearchQueryChanged
       onChange={onSearchChanged}
       onSearchChange={onSearchQueryChanged}
       selectOnBlur={false}
+      disabled={disabled}
     />
   </div>
 );
