@@ -6,7 +6,7 @@ import {
   fetchEquipments as fetchEquipmentsAction,
   fetchUniqueEquipment as fetchUniqueEquipmentAction,
   filterEquipments as filterEquipmentsAction,
-} from '../../../redux/thunks/equipments';x
+} from '../../../redux/thunks/equipments';
 
 class App extends Component {
   componentDidMount() {
