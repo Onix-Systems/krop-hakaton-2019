@@ -26,9 +26,11 @@ export const fetchEquipments = () => async (dispatch) => {
   }
 };
 
-export const filterEquipments = () => async (dispatch, getState) => {
-  const { filters } = getState();
-  const queryString = createQueryString(filters);
+export const filterEquipments = (queryString) => async (dispatch) => {
+  const query = new URLSearchParams(queryString);
+  if (query.has('q') && query.get('q').length < 3) {
+    return;
+  }
 
   dispatch(showLoading());
   try {

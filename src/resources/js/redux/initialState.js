@@ -13,13 +13,6 @@ export default {
     diagnostic_type: [],
     work_schedule: [],
   },
-  filters: {
-    address_locality: 'Кропивницький',
-    q: '', // custodianName or diagnosticType
-    diagnostic_subgroup: '',
-    diagnostic_type: '',
-    work_schedule: '',
-  },
   flashMessage: {
     hidden: true,
     text: '',

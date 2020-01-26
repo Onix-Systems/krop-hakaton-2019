@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import ServiceSelectorView from './ServiceSelectorView';
 
 class ServiceSelector extends Component {
   render() {
     const {
-      onServiceChanged, value, label, options, rightBorder = false, disabled
+      onServiceChanged, value, label, options, loading, rightBorder = false
     } = this.props;
     return (
       <ServiceSelectorView
@@ -13,10 +14,14 @@ class ServiceSelector extends Component {
         options={options}
         onServiceChanged={onServiceChanged}
         rightBorder={rightBorder}
-        disabled={disabled}
+        disabled={loading}
       />
     );
   }
 }
 
-export default ServiceSelector;
+const mapStateToProps = (state) => ({
+  loading: state.loading,
+});
+
+export default connect(mapStateToProps)(ServiceSelector);

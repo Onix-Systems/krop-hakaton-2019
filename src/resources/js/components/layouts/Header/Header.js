@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import Logo from '../../elements/Logo/Logo';
 import CityPicker from '../../elements/CityPicker/CityPicker';
 import SearchField from '../../elements/SearchField/SearchField';
 import ServiceSelector from '../../elements/ServiceSelector/ServiceSelector';
 import fetchAvailableFiltersAction from '../../../redux/thunks/availableFilters';
-import { applyFiltersToEquipments as applyFiltersToEquipmentsAction } from '../../../redux/thunks/filters';
-import { mapFilterToDropdownProp } from '../../../helpers';
+import { createSearchStringFromProps, mapQueryStringParamToProp } from '../../../helpers';
 
 class Header extends Component {
   componentDidMount() {
@@ -15,30 +15,49 @@ class Header extends Component {
   }
 
   onSubgroupChanged = (event, { value }) => {
-    const { applyFiltersToEquipments } = this.props;
-    applyFiltersToEquipments({ diagnostic_subgroup: value });
+    const { history, location } = this.props;
+    const searchString = createSearchStringFromProps(location.search, {
+      diagnostic_subgroup: value,
+    });
+    history.push(searchString);
   };
 
   onTypeChanged = (event, { value }) => {
-    const { applyFiltersToEquipments } = this.props;
-    applyFiltersToEquipments({ diagnostic_type: value });
+    const { history, location } = this.props;
+    const searchString = createSearchStringFromProps(location.search, {
+      diagnostic_type: value,
+    });
+    history.push(searchString);
   };
 
   onScheduleChanged = (event, { value }) => {
-    const { applyFiltersToEquipments } = this.props;
-    applyFiltersToEquipments({ work_schedule: value });
+    const { history, location } = this.props;
+    const searchString = createSearchStringFromProps(location.search, {
+      work_schedule: value,
+    });
+    history.push(searchString);
   };
 
   render() {
-    const {
-      subgroups,
-      types,
-      schedule,
-      loading,
-      diagnosticSubgroup,
-      diagnosticType,
-      workSchedule,
-    } = this.props;
+    const {subgroups, types, schedule, location} = this.props;
+
+    const diagnosticSubgroup = mapQueryStringParamToProp(
+      location.search,
+      'diagnostic_subgroup',
+      '',
+    );
+
+    const diagnosticType = mapQueryStringParamToProp(
+      location.search,
+      'diagnostic_type',
+      '',
+    );
+
+    const workSchedule = mapQueryStringParamToProp(
+      location.search,
+      'work_schedule',
+      '',
+    );
 
     return (
       <div className="header container-fluid">
@@ -57,7 +76,6 @@ class Header extends Component {
             value={diagnosticSubgroup}
             options={subgroups}
             onServiceChanged={this.onSubgroupChanged}
-            disabled={loading}
           />
           <div className="header__divider" />
           <ServiceSelector
@@ -65,7 +83,6 @@ class Header extends Component {
             value={diagnosticType}
             options={types}
             onServiceChanged={this.onTypeChanged}
-            disabled={loading}
           />
           <div className="header__divider" />
           <ServiceSelector
@@ -73,7 +90,6 @@ class Header extends Component {
             value={workSchedule}
             options={schedule}
             onServiceChanged={this.onScheduleChanged}
-            disabled={loading}
           />
         </div>
       </div>
@@ -85,15 +101,12 @@ const mapStateToProps = (state) => ({
   subgroups: state.availableFilters.diagnostic_subgroup,
   types: state.availableFilters.diagnostic_type,
   schedule: state.availableFilters.work_schedule,
-  loading: state.loading,
-  diagnosticSubgroup: mapFilterToDropdownProp(state.filters.diagnostic_subgroup),
-  diagnosticType: mapFilterToDropdownProp(state.filters.diagnostic_type),
-  workSchedule: mapFilterToDropdownProp(state.filters.work_schedule),
 });
 
 const mapDispatchToProps = {
   fetchAvailableFilters: fetchAvailableFiltersAction,
-  applyFiltersToEquipments: applyFiltersToEquipmentsAction,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(Header),
+);
