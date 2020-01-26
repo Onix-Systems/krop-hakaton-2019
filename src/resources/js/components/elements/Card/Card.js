@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+
 import CardView from './CardView';
-import { showSuccessFlashMessage as showSuccessFlashMessageAction } from '../../../redux/actions/flashMessage';
-import { showErrorFlashMessage as showErrorFlashMessageAction } from '../../../redux/actions/flashMessage'
+import {
+  showSuccessFlashMessage as showSuccessFlashMessageAction,
+  showErrorFlashMessage as showErrorFlashMessageAction,
+} from '../../../redux/actions/flashMessage';
 
 class Card extends Component {
   constructor(props) {
@@ -10,6 +14,12 @@ class Card extends Component {
     this.state = {
       expand: false,
     };
+  }
+
+  onShowOnMapClicked = () => {
+    const { history, equipment } = this.props;
+    const uniqueUrl = `search?id_u=${equipment.id_u}`;
+    history.push(uniqueUrl);
   }
 
   onExpandClicked = () => {
@@ -65,6 +75,7 @@ class Card extends Component {
         expand={expand}
         onExpandClicked={this.onExpandClicked}
         onShareClicked={this.onShareClicked}
+        onShowOnMapClicked={this.onShowOnMapClicked}
       />
     );
   }
@@ -75,4 +86,6 @@ const mapDispatchToProps = {
   showErrorFlashMessage: showErrorFlashMessageAction,
 };
 
-export default connect(null, mapDispatchToProps)(Card);
+export default withRouter(
+  connect(null, mapDispatchToProps)(Card),
+);
