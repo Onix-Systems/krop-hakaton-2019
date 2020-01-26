@@ -49,3 +49,46 @@ export const createQueryString = (filters) => {
     ? decodeURI(`?${query.toString()}`)
     : '';
 };
+
+export const mapEquipmentsToPoints = (equipments) => {
+  const setOfPoints = {
+    latitude: {},
+    longitude: {},
+  };
+
+  const points = equipments.filter((equipment) => {
+    const { latitude, longitude } = equipment;
+    if (!setOfPoints.latitude[latitude] && !setOfPoints.longitude[longitude]) {
+      setOfPoints.latitude[latitude] = true;
+      setOfPoints.longitude[longitude] = true;
+      return true;
+    }
+    return false;
+  });
+
+  const maxPoint = points.reduce((current, point) => {
+    if (point.latitude > current.latitude && point.longitude > current.longitude) {
+      return { ...point };
+    }
+    return current;
+  }, {
+    latitude: points[0].latitude,
+    longitude: points[0].longitude,
+  });
+
+  const minPoint = points.reduce((current, point) => {
+    if (point.latitude < current.latitude && point.longitude < current.longitude) {
+      return { ...point };
+    }
+    return current;
+  }, {
+    latitude: points[0].latitude,
+    longitude: points[0].longitude,
+  });
+
+  const center = {
+    latitude: (maxPoint.latitude - minPoint.latitude) / 2 + +minPoint.latitude,
+    longitude: (maxPoint.longitude - minPoint.longitude) / 2 + +minPoint.longitude + 0.12,
+  };
+  return { points, center };
+};

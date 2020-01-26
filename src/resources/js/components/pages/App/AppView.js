@@ -12,18 +12,14 @@ const AppView = ({ loading, notFound, error }) => {
   } else if (notFound) {
     content = <Error text="За вказаними фільтрами нічого не знайдено" />;
   } else if (error) {
-    content = <Error text="Під час завантаження даних сталася помилка" />
+    content = <Error text="Під час завантаження даних сталася помилка" />;
   } else {
     content = <Body />;
   }
 
   return (
     <div className="app">
-      <FlashMessage
-        text="My awesome flash message"
-        type="error"
-        show
-      />
+      <FlashMessage />
       <Header />
       {content}
     </div>

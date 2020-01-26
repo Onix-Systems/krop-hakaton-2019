@@ -17,7 +17,6 @@ class App extends Component {
       filterEquipments,
     } = this.props;
     const query = new URLSearchParams(location.search);
-
     if (query.has('id_u')) {
       fetchUniqueEquipment(query.get('id_u'));
     } else if (query.keys().next().value) {
@@ -28,9 +27,15 @@ class App extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    const { location, filterEquipments } = this.props;
+    const { location, fetchUniqueEquipment, filterEquipments } = this.props;
+    const query = new URLSearchParams(location.search);
+
     if (location.search !== prevProps.location.search) {
-      filterEquipments(location.search);
+      if (query.has('id_u')) {
+        fetchUniqueEquipment(query.get('id_u'));
+      } else {
+        filterEquipments(location.search);
+      }
     }
   }
 

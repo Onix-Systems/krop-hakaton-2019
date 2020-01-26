@@ -1,12 +1,19 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { connect } from 'react-redux';
 import MapView from './MapView';
+import { mapEquipmentsToPoints } from '../../../helpers';
 
-class Map extends Component {
-  render() {
-    return (
-      <MapView />
-    );
-  }
-}
+const Map = ({ selectedEquipment, points, center }) => (
+  <MapView
+    points={points}
+    center={center}
+    selectedEquipment={selectedEquipment}
+  />
+);
 
-export default Map;
+const mapStateToProps = (state) => ({
+  selectedEquipment: state.equipments.selected,
+  ...mapEquipmentsToPoints(state.equipments.filtered),
+});
+
+export default connect(mapStateToProps)(Map);

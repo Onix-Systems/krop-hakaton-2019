@@ -25,3 +25,20 @@
 .leaflet-top {
     z-index: 10 !important;
 }
+
+.popup__custodian-name {
+    color: $dark;
+    font: 500 15px/12px $font;
+    padding: 5px 0;
+    margin-bottom: 10px;
+}
+
+.popup__address {
+    margin-bottom: 5px;
+}
+
+.popup__address_text {
+    font-family: $font;
+    font-size: 0.9em;
+}
+

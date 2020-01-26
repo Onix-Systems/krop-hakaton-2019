@@ -21,7 +21,7 @@ const equipmentsReducer = (state = initialState.equipments, action) => {
         ...state,
         error: false,
         notFound: false,
-        filtered: [],
+        filtered: [action.equipment],
         selected: action.equipment,
       };
     case EQUIPMENTS_NOT_FOUND:
