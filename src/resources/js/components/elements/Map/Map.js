@@ -1,18 +1,22 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import MapView from './MapView';
-import { mapEquipmentsToPoints } from '../../../helpers';
+import { mapEquipmentsToPoints, laptop } from '../../../helpers';
 
-const Map = ({ selectedEquipment, points, center }) => (
-  <MapView
-    points={points}
-    center={center}
-    selectedEquipment={selectedEquipment}
-  />
-);
+const Map = ({ selectedEquipment, hide, points, center }) => {
+  return (
+    <MapView
+      hide={hide}
+      points={points}
+      center={center}
+      selectedEquipment={selectedEquipment}
+    />
+  );
+};
 
 const mapStateToProps = (state) => ({
   selectedEquipment: state.equipments.selected,
+  hide: laptop() && !state.map,
   ...mapEquipmentsToPoints(state.equipments.filtered),
 });
 

@@ -19,4 +19,5 @@ export default {
     positive: false,
     negative: false,
   },
+  map: false,
 };

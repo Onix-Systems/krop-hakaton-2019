@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-
 import CardView from './CardView';
 import {
   showSuccessFlashMessage as showSuccessFlashMessageAction,
   showErrorFlashMessage as showErrorFlashMessageAction,
 } from '../../../redux/actions/flashMessage';
+import { toggleMap as toggleMapAction } from '../../../redux/actions/map';
+import { laptop } from '../../../helpers';
 
 class Card extends Component {
   constructor(props) {
@@ -17,9 +18,13 @@ class Card extends Component {
   }
 
   onShowOnMapClicked = () => {
-    const { history, equipment } = this.props;
-    const uniqueUrl = `search?id_u=${equipment.id_u}`;
-    history.push(uniqueUrl);
+    const { history, equipment, selectedEquipment, toggleMap } = this.props;
+    if (laptop() && selectedEquipment) {
+      toggleMap();
+    } else {
+      const uniqueUrl = `search?id_u=${equipment.id_u}`;
+      history.push(uniqueUrl);
+    }
   }
 
   onExpandClicked = () => {
@@ -81,11 +86,16 @@ class Card extends Component {
   }
 }
 
+const mapStateToProps = (state) => ({
+  selectedEquipment: state.equipments.selected,
+});
+
 const mapDispatchToProps = {
   showSuccessFlashMessage: showSuccessFlashMessageAction,
   showErrorFlashMessage: showErrorFlashMessageAction,
+  toggleMap: toggleMapAction,
 };
 
 export default withRouter(
-  connect(null, mapDispatchToProps)(Card),
+  connect(mapStateToProps, mapDispatchToProps)(Card),
 );

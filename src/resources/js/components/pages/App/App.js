@@ -7,6 +7,8 @@ import {
   fetchUniqueEquipment as fetchUniqueEquipmentAction,
   filterEquipments as filterEquipmentsAction,
 } from '../../../redux/thunks/equipments';
+import { showOnMap as showOnMapAction } from '../../../redux/thunks/map';
+import { laptop, tablet } from '../../../helpers'
 
 class App extends Component {
   componentDidMount() {
@@ -27,12 +29,16 @@ class App extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    const { location, fetchUniqueEquipment, filterEquipments } = this.props;
+    const { location, fetchUniqueEquipment, filterEquipments, showOnMap } = this.props;
     const query = new URLSearchParams(location.search);
 
     if (location.search !== prevProps.location.search) {
       if (query.has('id_u')) {
-        fetchUniqueEquipment(query.get('id_u'));
+        if (laptop()) {
+          showOnMap(query.get('id_u'));
+        } else {
+          fetchUniqueEquipment(query.get('id_u'));
+        }
       } else {
         filterEquipments(location.search);
       }
@@ -61,6 +67,7 @@ const mapDispatchToProps = {
   fetchEquipments: fetchEquipmentsAction,
   fetchUniqueEquipment: fetchUniqueEquipmentAction,
   filterEquipments: filterEquipmentsAction,
+  showOnMap: showOnMapAction,
 };
 
 export default withRouter(

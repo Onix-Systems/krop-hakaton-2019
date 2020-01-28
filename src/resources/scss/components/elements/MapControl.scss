@@ -1,0 +1,27 @@
+@import "../../mixins";
+@import "../../variables";
+
+.map-control {
+    position: fixed;
+    right: 30px;
+    bottom: 20px;
+    z-index: 10002;
+    width: 70px;
+    height: 70px;
+    @include radius(50%);
+    border: 3px solid $grey2;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.map-control__pin {
+    width: 75%;
+    height: 75%;
+}
+
+.map-control__close {
+    width: 60%;
+    height: 60%;
+}
