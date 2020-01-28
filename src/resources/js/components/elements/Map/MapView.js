@@ -1,5 +1,6 @@
 import React from 'react';
 import L from 'leaflet';
+import classNames from 'classnames';
 import {
   Map, TileLayer, Marker, Popup,
 } from 'react-leaflet';
@@ -7,16 +8,13 @@ import MarkerIcon from '../../../../images/png/marker-icon.png';
 
 const customMarker = new L.icon({ iconUrl: MarkerIcon });
 
-const MapView = ({ points, center, selectedEquipment }) => {
-  console.log(points)
-  console.log(center)
-  console.log(selectedEquipment)
+const MapView = ({ points, center, selectedEquipment, hide }) => {
   if (selectedEquipment) {
     points = [selectedEquipment];
   }
   return (
     <Map
-      className="leaflet-container"
+      className={classNames('leaflet-container', { 'leaflet-container--hide': hide })}
       center={[center.latitude, center.longitude]}
       zoom={12}
       maxZoom={40}
