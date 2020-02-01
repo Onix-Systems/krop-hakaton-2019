@@ -29,10 +29,13 @@ class SearchController extends Controller
         return response()->json([
             'status' => Response::HTTP_OK,
             'code' => ApiCode::OK,
-            'message' => 'Hospital fetched successfully',
+            'message' => 'Equipments fetched successfully',
             'data' => [
-                'qty' => $equipments->count(),
-                'search_result' => $equipments
+                'current_page' => $equipments->currentPage(),
+                'last_page' => $equipments->lastPage(),
+                'per_page' => $equipments->perPage(),
+                'qty' => $equipments->total(),
+                'search_result' => $equipments->items(),
             ]
         ]);
     }
