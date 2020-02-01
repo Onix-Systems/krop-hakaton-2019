@@ -4,11 +4,12 @@
 
 .leaflet-container {
     height: 100vh;
-    width: 100%;
+    width: calc(50% - 30px);
     position: fixed;
-    @media only screen and (max-width: #{$desktop}){
+    @media only screen and (max-width: #{$laptop}){
         top: 0;
         left: 0;
+        width: 100%;
         z-index: 10001;
     }
 }

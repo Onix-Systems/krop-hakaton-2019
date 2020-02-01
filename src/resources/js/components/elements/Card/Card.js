@@ -7,7 +7,7 @@ import {
   showErrorFlashMessage as showErrorFlashMessageAction,
 } from '../../../redux/actions/flashMessage';
 import { toggleMap as toggleMapAction } from '../../../redux/actions/map';
-import { laptop } from '../../../helpers';
+import { laptopOrSmallerScreen } from '../../../helpers';
 
 class Card extends Component {
   constructor(props) {
@@ -19,7 +19,7 @@ class Card extends Component {
 
   onShowOnMapClicked = () => {
     const { history, equipment, selectedEquipment, toggleMap } = this.props;
-    if (laptop() && selectedEquipment) {
+    if (laptopOrSmallerScreen() && selectedEquipment) {
       toggleMap();
     } else {
       const uniqueUrl = `search?id_u=${equipment.id_u}`;

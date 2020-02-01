@@ -50,13 +50,7 @@ export const createQueryString = (filters) => {
     : '';
 };
 
-// export const mobileS = () => window.matchMedia('only screen and (max-width: 320px)').matches;
-// export const mobileM = () => window.matchMedia('only screen and (max-width: 345px)').matches;
-// export const mobileL = () => window.matchMedia('only screen and (max-width: 425px)').matches;
-// export const tablet = () => window.matchMedia('only screen and (max-width: 768px)').matches;
-export const laptop = () => window.matchMedia('only screen and (max-width: 1024px)').matches;
-export const laptopL = () => window.matchMedia('only screen and (max-width: 1440px)').matches;
-export const large4K = () => window.matchMedia('only screen and (max-width: 2560px)').matches;
+export const laptopOrSmallerScreen = () => window.matchMedia('only screen and (max-width: 1024px)').matches;
 
 export const mapEquipmentsToPoints = (equipments) => {
   const setOfPoints = {
@@ -86,21 +80,9 @@ export const mapEquipmentsToPoints = (equipments) => {
     minLongitude: points[0].longitude,
   });
 
-  let longitudeOffset = 0;
-  if (laptop()) {
-    longitudeOffset = 0;
-  } else if (laptopL()) {
-    longitudeOffset = 0.12;
-  } else if (large4K()) {
-    longitudeOffset = 0.22;
-  } else {
-    longitudeOffset = 0;
-  }
-
   const center = {
     latitude: (edgePoints.maxLatitude - edgePoints.minLatitude) / 2 + +edgePoints.minLatitude,
-    longitude: (edgePoints.maxLongitude - edgePoints.minLongitude) / 2
-      + +edgePoints.minLongitude + longitudeOffset,
+    longitude: (edgePoints.maxLongitude - edgePoints.minLongitude) / 2 + +edgePoints.minLongitude,
   };
   return { points, center };
 };

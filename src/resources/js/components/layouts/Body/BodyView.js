@@ -1,8 +1,8 @@
 import React from 'react';
 import List from '../../elements/List/List';
 import Map from '../../elements/Map/Map';
-import { laptop } from '../../../helpers';
-import MapControl from '../../elements/MapControl/MapControl'
+import { laptopOrSmallerScreen } from '../../../helpers';
+import MapControl from '../../elements/MapControl/MapControl';
 
 const BodyView = () => (
   <div className="body container-fluid">
@@ -12,7 +12,7 @@ const BodyView = () => (
     <div className="col-xl-6 order-xl-2 order-1">
       <Map />
     </div>
-    {laptop() && <MapControl />}
+    {laptopOrSmallerScreen() && <MapControl />}
   </div>
 );
 

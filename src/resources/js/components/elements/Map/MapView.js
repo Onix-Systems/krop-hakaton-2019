@@ -10,13 +10,14 @@ const customMarker = new L.icon({ iconUrl: MarkerIcon });
 
 const MapView = ({ points, center, selectedEquipment, hide }) => {
   if (selectedEquipment) {
+    // eslint-disable-next-line no-param-reassign
     points = [selectedEquipment];
   }
   return (
     <Map
       className={classNames('leaflet-container', { 'leaflet-container--hide': hide })}
       center={[center.latitude, center.longitude]}
-      zoom={12}
+      zoom={13}
       maxZoom={40}
       animate
       attributionControl

@@ -8,7 +8,7 @@ import {
   filterEquipments as filterEquipmentsAction,
 } from '../../../redux/thunks/equipments';
 import { showOnMap as showOnMapAction } from '../../../redux/thunks/map';
-import { laptop, tablet } from '../../../helpers'
+import { laptopOrSmallerScreen } from '../../../helpers';
 
 class App extends Component {
   componentDidMount() {
@@ -34,7 +34,7 @@ class App extends Component {
 
     if (location.search !== prevProps.location.search) {
       if (query.has('id_u')) {
-        if (laptop()) {
+        if (laptopOrSmallerScreen()) {
           showOnMap(query.get('id_u'));
         } else {
           fetchUniqueEquipment(query.get('id_u'));

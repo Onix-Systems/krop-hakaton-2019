@@ -5,8 +5,7 @@ import {
   equipmentsFailure,
 } from '../actions/equipments';
 import { hideLoading, showLoading } from '../actions/loading';
-import { createQueryString, laptop } from '../../helpers'
-import { toggleMap } from '../actions/map'
+import { createQueryString } from '../../helpers';
 
 export const fetchEquipments = () => async (dispatch) => {
   try {
