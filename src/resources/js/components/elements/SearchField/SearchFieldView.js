@@ -14,7 +14,7 @@ const SearchFieldView = ({
       fluid
       value={value.value}
       options={options}
-      icon={<Icon name="search" />}
+      icon={<Icon className="search-icon" name="search" />}
       onChange={onSearchChanged}
       onSearchChange={onSearchQueryChanged}
       selectOnBlur={false}

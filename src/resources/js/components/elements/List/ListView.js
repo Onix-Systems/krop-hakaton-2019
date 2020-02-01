@@ -1,15 +1,22 @@
 import React from 'react';
+import classNames from 'classnames';
 import Card from '../Card/Card';
 import ViewAllButton from '../ViewAllButton/ViewAllButton';
+import Pagination from '../Pagination/Pagination';
+import Title from '../Title/Title';
 
 const ListView = ({
   equipments, selectedEquipment,
 }) => (
   <div className="list">
-    <div className="list__title">
-      Біля 400 варіантів діагностичних обладнань
-    </div>
-    <div className="list__cards-container">
+    <Title />
+    <div
+      className={
+        classNames('list__cards-container', {
+          'list__cards-container--unique-card': selectedEquipment,
+        })
+      }
+    >
       {
         selectedEquipment ? (
           <Card
@@ -24,8 +31,8 @@ const ListView = ({
           ))
         )
       }
+      { selectedEquipment ? <ViewAllButton /> : <Pagination /> }
     </div>
-    {selectedEquipment && <ViewAllButton />}
   </div>
 );
 

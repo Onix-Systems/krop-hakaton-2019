@@ -18,6 +18,7 @@ class Header extends Component {
     const { history, location } = this.props;
     const searchString = createSearchStringFromProps(location.search, {
       diagnostic_subgroup: value,
+      page: 1,
     });
     history.push(searchString);
   };
@@ -26,6 +27,7 @@ class Header extends Component {
     const { history, location } = this.props;
     const searchString = createSearchStringFromProps(location.search, {
       diagnostic_type: value,
+      page: 1,
     });
     history.push(searchString);
   };
@@ -34,6 +36,7 @@ class Header extends Component {
     const { history, location } = this.props;
     const searchString = createSearchStringFromProps(location.search, {
       work_schedule: value,
+      page: 1,
     });
     history.push(searchString);
   };

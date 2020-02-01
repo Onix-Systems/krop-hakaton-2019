@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import AppView from './AppView';
 import {
-  fetchEquipments as fetchEquipmentsAction,
   fetchUniqueEquipment as fetchUniqueEquipmentAction,
   filterEquipments as filterEquipmentsAction,
 } from '../../../redux/thunks/equipments';
@@ -14,7 +13,6 @@ class App extends Component {
   componentDidMount() {
     const {
       location,
-      fetchEquipments,
       fetchUniqueEquipment,
       filterEquipments,
     } = this.props;
@@ -24,7 +22,7 @@ class App extends Component {
     } else if (query.keys().next().value) {
       filterEquipments(location.search);
     } else {
-      fetchEquipments();
+      filterEquipments('');
     }
   }
 
@@ -64,7 +62,6 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = {
-  fetchEquipments: fetchEquipmentsAction,
   fetchUniqueEquipment: fetchUniqueEquipmentAction,
   filterEquipments: filterEquipmentsAction,
   showOnMap: showOnMapAction,

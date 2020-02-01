@@ -9,12 +9,13 @@ class CityPicker extends Component {
     const { history, location } = this.props;
     const searchString = createSearchStringFromProps(location.search, {
       address_locality: value,
+      page: 1,
     });
     history.push(searchString);
   };
 
   render() {
-    let { cities, loading, location } = this.props;
+    let { cities, loading, selectedEquipment, location } = this.props;
     const currentCity = mapQueryStringParamToProp(
       location.search,
       'address_locality',
@@ -24,7 +25,7 @@ class CityPicker extends Component {
       <CityPickerView
         city={currentCity}
         cities={cities}
-        disabled={loading}
+        disabled={loading || selectedEquipment}
         onCityChanged={this.onCityChanged}
       />
     );
@@ -33,6 +34,7 @@ class CityPicker extends Component {
 
 const mapStateToProps = (state) => ({
   cities: state.availableFilters.address_locality,
+  selectedEquipment: !!state.equipments.selected,
   loading: state.loading,
 });
 

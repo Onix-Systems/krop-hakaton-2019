@@ -13,7 +13,7 @@ class SearchField extends Component {
 
   onChange = (value) => {
     const { location } = this.props;
-    const searchString = createSearchStringFromProps(location.search, { q: value });
+    const searchString = createSearchStringFromProps(location.search, { q: value, page: 1 });
     this.autocompleteDebounced(searchString);
   }
 
@@ -26,7 +26,7 @@ class SearchField extends Component {
   }
 
   render() {
-    const { options, loading, location } = this.props;
+    const { options, loading, location, selectedEquipment } = this.props;
     const value = mapQueryStringParamToProp(location.search, 'q', '');
     return (
       <SearchFieldView
@@ -34,7 +34,7 @@ class SearchField extends Component {
         value={value}
         onSearchChanged={this.onSearchChanged}
         onSearchQueryChanged={this.onSearchQueryChanged}
-        disabled={loading}
+        disabled={loading || selectedEquipment}
       />
     );
   }
@@ -43,6 +43,7 @@ class SearchField extends Component {
 const mapStateToProps = (state) => ({
   options: state.availableFilters.q,
   loading: state.loading,
+  selectedEquipment: !!state.equipments.selected,
 });
 
 export default withRouter(
