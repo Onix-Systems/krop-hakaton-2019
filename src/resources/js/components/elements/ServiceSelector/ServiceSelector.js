@@ -2,26 +2,22 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ServiceSelectorView from './ServiceSelectorView';
 
-class ServiceSelector extends Component {
-  render() {
-    const {
-      onServiceChanged, value, label, options, loading, rightBorder = false
-    } = this.props;
-    return (
-      <ServiceSelectorView
-        label={label}
-        selected={value}
-        options={options}
-        onServiceChanged={onServiceChanged}
-        rightBorder={rightBorder}
-        disabled={loading}
-      />
-    );
-  }
-}
+const ServiceSelector = ({
+  onServiceChanged, value, label, options, loading, selectedEquipment, rightBorder = false,
+}) => (
+  <ServiceSelectorView
+    label={label}
+    selected={value}
+    options={options}
+    onServiceChanged={onServiceChanged}
+    rightBorder={rightBorder}
+    disabled={loading || selectedEquipment}
+  />
+);
 
 const mapStateToProps = (state) => ({
   loading: state.loading,
+  selectedEquipment: !!state.equipments.selected,
 });
 
 export default connect(mapStateToProps)(ServiceSelector);

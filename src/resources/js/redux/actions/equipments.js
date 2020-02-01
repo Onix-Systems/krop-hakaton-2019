@@ -3,9 +3,10 @@ export const UNIQUE_EQUIPMENT_SELECTED = 'UNIQUE_EQUIPMENT_SELECTED';
 export const EQUIPMENTS_NOT_FOUND = 'EQUIPMENTS_NOT_FOUND';
 export const EQUIPMENTS_FAILURE = 'EQUIPMENTS_FAILURE';
 
-export const equipmentsChanged = (equipments) => ({
+export const equipmentsChanged = (equipments, meta) => ({
   type: EQUIPMENTS_CHANGED,
   equipments,
+  meta,
 });
 
 export const uniqueEquipmentSelected = (equipment) => ({

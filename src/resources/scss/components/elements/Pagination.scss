@@ -1,0 +1,11 @@
+@import "../../variables";
+
+.custom-pagination {
+    border: 1px solid $grey2 !important;
+}
+
+.pagination-wrapper {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 16px;
+}

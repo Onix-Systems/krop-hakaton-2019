@@ -1,21 +1,18 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import ListView from './ListView';
 
-class List extends Component {
-  render() {
-    const { equipments, selectedEquipment } = this.props;
-    return (
-      <ListView
-        equipments={equipments}
-        selectedEquipment={selectedEquipment}
-      />
-    );
-  }
-}
+const List = ({ equipments, pagination, selectedEquipment }) => (
+  <ListView
+    equipments={equipments}
+    pagination={pagination}
+    selectedEquipment={selectedEquipment}
+  />
+);
 
 const mapStateToProps = (state) => ({
   equipments: state.equipments.filtered,
+  pagination: state.equipments.pagination,
   selectedEquipment: state.equipments.selected,
 });
 

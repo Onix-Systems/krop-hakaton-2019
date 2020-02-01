@@ -11,6 +11,10 @@ const equipmentsReducer = (state = initialState.equipments, action) => {
     case EQUIPMENTS_CHANGED:
       return {
         ...state,
+        pagination: {
+          ...state.pagination,
+          ...action.meta,
+        },
         error: false,
         notFound: false,
         filtered: action.equipments,
