@@ -2,7 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { Pagination as SemanticUiPagination } from 'semantic-ui-react';
-import { createSearchStringFromProps } from '../../../helpers';
+import {
+  createSearchStringFromProps,
+  bigPhoneOrSmallerScreen,
+  phoneOrSmallerScreen,
+} from '../../../helpers';
 
 class Pagination extends Component {
   onPageChanged = (event, { activePage }) => {
@@ -21,6 +25,8 @@ class Pagination extends Component {
           totalPages={lastPage}
           onPageChange={this.onPageChanged}
           className="custom-pagination"
+          siblingRange={bigPhoneOrSmallerScreen() ? 0 : 1}
+          boundaryRange={phoneOrSmallerScreen() ? 0 : 1}
         />
       </div>
     );

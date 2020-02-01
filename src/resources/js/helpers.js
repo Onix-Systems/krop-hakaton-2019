@@ -51,6 +51,8 @@ export const createQueryString = (filters) => {
 };
 
 export const laptopOrSmallerScreen = () => window.matchMedia('only screen and (max-width: 1024px)').matches;
+export const bigPhoneOrSmallerScreen = () => window.matchMedia('only screen and (max-width: 565px)').matches;
+export const phoneOrSmallerScreen = () => window.matchMedia('only screen and (max-width: 425px)').matches;
 
 export const mapEquipmentsToPoints = (equipments) => {
   const setOfPoints = {

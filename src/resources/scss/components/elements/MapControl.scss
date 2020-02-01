@@ -14,6 +14,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    @media only screen and (max-width: #{$phones-big}){
+        right: 20px;
+    }
 }
 
 .map-control__pin {
