@@ -13,3 +13,5 @@ sed -i "s#DB_PORT=.*#DB_PORT=5432#"                 .env
 sed -i "s#DB_DATABASE=.*#DB_DATABASE=$DB_DATABASE#" .env
 sed -i "s#DB_USERNAME=.*#DB_USERNAME=$DB_USERNAME#" .env
 sed -i "s#DB_PASSWORD=.*#DB_PASSWORD=$DB_PASSWORD#" .env
+
+sed -i "s#SENTRY_LARAVEL_DSN=.*#SENTRY_LARAVEL_DSN=$SENTRY_LARAVEL_DSN#" .env
