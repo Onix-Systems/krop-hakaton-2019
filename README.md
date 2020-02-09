@@ -5,7 +5,7 @@ https://onix-systems-krop-hakaton-2019.staging.onix.ua/
 
 ## Local project setup
 
-Set up project localy with `docker` and  `docker-compose`.
+Set up project locally with `docker` and  `docker-compose`.
 
 1. Clone project
 ```
@@ -38,7 +38,7 @@ docker-compose exec -u user web bash
 composer install
 ```
 
-7. Prepare corrent `.env` file
+7. Prepare correct `.env` file
 ```
 cp .env.example .env
 php artisan key:generate
@@ -47,7 +47,7 @@ php artisan key:generate
 8. Set up credentials for database in `.env` file
 ```
 DB_HOST=database
-DB_DATABASE=medical_sercice
+DB_DATABASE=medical_service
 DB_USERNAME=postgres
 DB_PASSWORD=secret
 ```
@@ -76,7 +76,7 @@ npm run prod
 
 Server available on `localhost:8080`
 
-Schell access into ``web`` container:
+Shell access into ``web`` container:
 ```
 docker-compose exec -u 1000 web bash
 ```
@@ -87,7 +87,7 @@ docker-compose exec -u 1000 web npm run prod
 npm run prod # inside container
 ```
 
-Build developement frontend build:
+Build development frontend build:
 ```
 docker-compose exec -u 1000 web npm run dev
 npm run dev # inside container

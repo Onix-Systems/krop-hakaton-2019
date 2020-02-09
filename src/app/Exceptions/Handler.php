@@ -2,6 +2,7 @@
 
 namespace App\Exceptions;
 
+use App\Exceptions\Api\ApiError;
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
@@ -13,7 +14,7 @@ class Handler extends ExceptionHandler
      * @var array
      */
     protected $dontReport = [
-        //
+        ApiError::class
     ];
 
     /**
@@ -49,8 +50,12 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-        return response()->view('errors.500', [
-            'sentryID' => $this->sentryID,
-        ], 500);
+        if ($this->shouldReport($exception)) {
+            return response()->view('errors.500', [
+                'sentryID' => $this->sentryID,
+            ], 500);
+        }
+
+        return parent::render($request, $exception);
     }
 }
