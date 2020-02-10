@@ -27,7 +27,7 @@ const MapView = ({ points, center, selectedEquipment, hide }) => {
       dragging
       easeLinearity={0.35}
     >
-      <TileLayer url="http://{s}.tile.osm.org/{z}/{x}/{y}.png" />
+      <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
       {points.map((point) => (
         <Marker
           key={point.id}
