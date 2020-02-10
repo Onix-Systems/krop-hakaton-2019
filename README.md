@@ -52,9 +52,10 @@ DB_USERNAME=postgres
 DB_PASSWORD=secret
 ```
 
-9. Run database migrations
+9. Run database migrations and seeders
 ```
 php artisan migrate
+php artisan db:seed --class=AdminTablesSeeder
 ```
 
 10. Create new admin user
