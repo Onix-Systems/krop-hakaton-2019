@@ -31,8 +31,8 @@ const ListView = ({
           ))
         )
       }
-      { selectedEquipment ? <ViewAllButton /> : <Pagination /> }
     </div>
+    { selectedEquipment ? <ViewAllButton /> : <Pagination /> }
   </div>
 );
 
