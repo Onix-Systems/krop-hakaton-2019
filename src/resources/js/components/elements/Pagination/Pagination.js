@@ -2,11 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { Pagination as SemanticUiPagination } from 'semantic-ui-react';
-import {
-  createSearchStringFromProps,
-  bigPhoneOrSmallerScreen,
-  phoneOrSmallerScreen,
-} from '../../../helpers';
+import { createSearchStringFromProps } from '../../../helpers';
 
 class Pagination extends Component {
   onPageChanged = (event, { activePage }) => {
@@ -16,7 +12,7 @@ class Pagination extends Component {
   }
 
   render() {
-    const { currentPage, lastPage } = this.props;
+    const { currentPage, lastPage, resize } = this.props;
     if (lastPage === 1) return null;
     return (
       <div className="pagination-wrapper">
@@ -25,8 +21,8 @@ class Pagination extends Component {
           totalPages={lastPage}
           onPageChange={this.onPageChanged}
           className="custom-pagination"
-          siblingRange={bigPhoneOrSmallerScreen() ? 0 : 1}
-          boundaryRange={phoneOrSmallerScreen() ? 0 : 1}
+          siblingRange={resize.bigPhoneOrSmallerScreen ? 0 : 1}
+          boundaryRange={resize.phoneOrSmallerScreen ? 0 : 1}
         />
       </div>
     );
@@ -36,6 +32,7 @@ class Pagination extends Component {
 const mapStateToProps = (state) => ({
   currentPage: state.equipments.pagination.current_page,
   lastPage: state.equipments.pagination.last_page,
+  resize: state.resize,
 });
 
 export default withRouter(

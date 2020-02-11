@@ -1,3 +1,9 @@
+import {
+  laptopOrSmallerScreen,
+  bigPhoneOrSmallerScreen,
+  phoneOrSmallerScreen,
+} from '../helpers';
+
 export default {
   loading: true,
   equipments: {
@@ -26,4 +32,9 @@ export default {
     negative: false,
   },
   map: false,
+  resize: {
+    laptopOrSmallerScreen: laptopOrSmallerScreen(),
+    bigPhoneOrSmallerScreen: bigPhoneOrSmallerScreen(),
+    phoneOrSmallerScreen: phoneOrSmallerScreen(),
+  },
 };
