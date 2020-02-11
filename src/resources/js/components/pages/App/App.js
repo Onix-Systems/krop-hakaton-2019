@@ -7,9 +7,15 @@ import {
   filterEquipments as filterEquipmentsAction,
 } from '../../../redux/thunks/equipments';
 import { showOnMap as showOnMapAction } from '../../../redux/thunks/map';
-import { laptopOrSmallerScreen } from '../../../helpers';
+import { resize as resizeEvent } from '../../../redux/actions/resize';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    const { resize } = this.props;
+    window.addEventListener('resize', resize);
+  }
+
   componentDidMount() {
     const {
       location,
@@ -27,12 +33,18 @@ class App extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    const { location, fetchUniqueEquipment, filterEquipments, showOnMap } = this.props;
+    const {
+      location,
+      fetchUniqueEquipment,
+      filterEquipments,
+      showOnMap,
+      resize,
+    } = this.props;
     const query = new URLSearchParams(location.search);
 
     if (location.search !== prevProps.location.search) {
       if (query.has('id_u')) {
-        if (laptopOrSmallerScreen()) {
+        if (resize.laptopOrSmallerScreen) {
           showOnMap(query.get('id_u'));
         } else {
           fetchUniqueEquipment(query.get('id_u'));
@@ -59,12 +71,14 @@ const mapStateToProps = (state) => ({
   loading: state.loading,
   notFound: state.equipments.notFound,
   error: state.equipments.error,
+  resize: state.resize,
 });
 
 const mapDispatchToProps = {
   fetchUniqueEquipment: fetchUniqueEquipmentAction,
   filterEquipments: filterEquipmentsAction,
   showOnMap: showOnMapAction,
+  resize: resizeEvent,
 };
 
 export default withRouter(

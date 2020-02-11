@@ -6,7 +6,7 @@
     height: 100vh;
     width: calc(50% - 30px);
     position: fixed;
-    @media only screen and (max-width: #{$laptop}){
+    @media only screen and (max-width: #{$desktop}){
         top: 0;
         left: 0;
         width: 100%;

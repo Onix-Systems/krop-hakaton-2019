@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import MapView from './MapView';
-import { mapEquipmentsToPoints, laptopOrSmallerScreen } from '../../../helpers';
+import { mapEquipmentsToPoints } from '../../../helpers';
 
 const Map = ({
   selectedEquipment, hide, points, center,
@@ -18,7 +18,7 @@ const Map = ({
 
 const mapStateToProps = (state) => ({
   selectedEquipment: state.equipments.selected,
-  hide: laptopOrSmallerScreen() && !state.map,
+  hide: state.resize.laptopOrSmallerScreen && !state.map,
   ...mapEquipmentsToPoints(state.equipments.filtered),
 });
 
