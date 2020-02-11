@@ -8,7 +8,7 @@ const ViewAllButton = ({ loading, history }) => {
     <div className="view-more-container">
       <button
         type="button"
-        className="card__button col-sm-6 col-lg-4 accordion-title__bottom_row--margin"
+        className="card__button col-sm-6 col-lg-5 accordion-title__bottom_row--margin"
         disabled={loading}
         onClick={onClick}
       >
