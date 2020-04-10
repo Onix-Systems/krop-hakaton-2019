@@ -657,6 +657,6 @@
         </section>
     </main>
 </div>
-
+@include('firebase-analytics')
 </body>
 </html>
