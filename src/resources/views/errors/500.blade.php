@@ -8,5 +8,6 @@
             dsn: '{{ env('SENTRY_LARAVEL_DSN') }}'
           });
         </script>
+        @include('firebase-analytics')
     @endunless
 </div>
