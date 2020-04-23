@@ -40,7 +40,7 @@ class EquipmentCategoryController extends Controller
      *                                  property="list",
      *                                  type="array",
      *                                  @OA\Items(
-     *                                      @OA\Property(property="0", type="string"),
+     *                                      type="string",
      *                                  ),
      *                               ),
      *                             ),

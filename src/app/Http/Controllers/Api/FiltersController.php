@@ -31,35 +31,35 @@ class FiltersController extends Controller
      *                          property="address_locality",
      *                          type="array",
      *                          @OA\Items(
-     *                              @OA\Property(property="0", type="string"),
+     *                              type="string",
      *                          ),
      *                      ),
      *                      @OA\Property(
      *                          property="q",
      *                          type="array",
      *                          @OA\Items(
-     *                              @OA\Property(property="0", type="string"),
+     *                              type="string",
      *                          ),
      *                      ),
      *                      @OA\Property(
      *                          property="diagnostic_subgroup",
      *                          type="array",
      *                          @OA\Items(
-     *                              @OA\Property(property="0", type="string"),
+     *                              type="string",
      *                          ),
      *                      ),
      *                      @OA\Property(
      *                          property="diagnostic_type",
      *                          type="array",
      *                          @OA\Items(
-     *                              @OA\Property(property="0", type="string"),
+     *                             type="string",
      *                          ),
      *                      ),
      *                      @OA\Property(
      *                          property="work_schedule",
      *                          type="array",
      *                          @OA\Items(
-     *                              @OA\Property(property="0", type="string"),
+     *                             type="string"
      *                          ),
      *                      ),
      *                  ),

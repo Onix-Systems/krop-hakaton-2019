@@ -226,12 +226,7 @@
                                                                 "list": {
                                                                     "type": "array",
                                                                     "items": {
-                                                                        "properties": {
-                                                                            "0": {
-                                                                                "type": "string"
-                                                                            }
-                                                                        },
-                                                                        "type": "object"
+                                                                        "type": "string"
                                                                     }
                                                                 }
                                                             },
@@ -438,56 +433,31 @@
                                                     "address_locality": {
                                                         "type": "array",
                                                         "items": {
-                                                            "properties": {
-                                                                "0": {
-                                                                    "type": "string"
-                                                                }
-                                                            },
-                                                            "type": "object"
+                                                            "type": "string"
                                                         }
                                                     },
                                                     "q": {
                                                         "type": "array",
                                                         "items": {
-                                                            "properties": {
-                                                                "0": {
-                                                                    "type": "string"
-                                                                }
-                                                            },
-                                                            "type": "object"
+                                                            "type": "string"
                                                         }
                                                     },
                                                     "diagnostic_subgroup": {
                                                         "type": "array",
                                                         "items": {
-                                                            "properties": {
-                                                                "0": {
-                                                                    "type": "string"
-                                                                }
-                                                            },
-                                                            "type": "object"
+                                                            "type": "string"
                                                         }
                                                     },
                                                     "diagnostic_type": {
                                                         "type": "array",
                                                         "items": {
-                                                            "properties": {
-                                                                "0": {
-                                                                    "type": "string"
-                                                                }
-                                                            },
-                                                            "type": "object"
+                                                            "type": "string"
                                                         }
                                                     },
                                                     "work_schedule": {
                                                         "type": "array",
                                                         "items": {
-                                                            "properties": {
-                                                                "0": {
-                                                                    "type": "string"
-                                                                }
-                                                            },
-                                                            "type": "object"
+                                                            "type": "string"
                                                         }
                                                     }
                                                 },
