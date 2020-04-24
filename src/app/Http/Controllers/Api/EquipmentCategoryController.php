@@ -15,6 +15,42 @@ class EquipmentCategoryController extends Controller
 {
 
     /**
+     * @OA\Get(
+     *     path="/get-equipment/category",
+     *     summary="Return list of all gategoties",
+     *     tags={"Equipment"},
+     *     @OA\Response(
+     *          response="200",
+     *          description="OK",
+     *          @OA\JsonContent(
+     *              @OA\Property(property="status", type="integer", example=200),
+     *              @OA\Property(property="code", type="string", example="OK"),
+     *              @OA\Property(property="message", type="string"),
+     *              @OA\Property(
+     *                  property="data",
+     *                  type="array",
+     *                  @OA\Items(
+     *                      @OA\Property(property="qty", type="integer"),
+     *                      @OA\Property(
+     *                          property="categories",
+     *                          type="array",
+     *                          @OA\Items(
+     *                              @OA\Property(property="name", type="string"),
+     *                              @OA\Property(
+     *                                  property="list",
+     *                                  type="array",
+     *                                  @OA\Items(
+     *                                      type="string",
+     *                                  ),
+     *                               ),
+     *                             ),
+     *                          ),
+     *                      ),
+     *                  ),
+     *              ),
+     *          ),
+     *     ),
+     * )
      *
      * @param Request $request
      * @param string $id
