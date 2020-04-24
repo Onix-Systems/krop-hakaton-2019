@@ -8,7 +8,7 @@ return [
         |--------------------------------------------------------------------------
         */
 
-        'title' => 'L5 Swagger UI',
+        'title' => 'KropDiagnost API',
     ],
 
     'routes' => [
@@ -232,6 +232,6 @@ return [
     |--------------------------------------------------------------------------
      */
     'constants' => [
-        'L5_SWAGGER_CONST_HOST' => env('L5_SWAGGER_CONST_HOST', 'http://my-default-host.com'),
+        'L5_SWAGGER_CONST_HOST' => env('L5_SWAGGER_CONST_HOST', config('app.url') . '/api'),
     ],
 ];
